@@ -27,42 +27,61 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        mnCadastroDespesa = new javax.swing.JMenuItem();
-        mnConsultaDespesa = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        mnReceita = new javax.swing.JMenu();
         mnCadastroReceita = new javax.swing.JMenuItem();
         mnConsultaReceita = new javax.swing.JMenuItem();
+        mnDespesa = new javax.swing.JMenu();
+        mnCadastroDespesa = new javax.swing.JMenuItem();
+        mnConsultaDespesa = new javax.swing.JMenuItem();
         mnSair = new javax.swing.JMenu();
         mnbtnSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Receita");
+        jLabel1.setText("Consulta");
 
-        mnCadastroDespesa.setText("Casdastro");
-        jMenu1.add(mnCadastroDespesa);
-
-        mnConsultaDespesa.setText("Consulta");
-        jMenu1.add(mnConsultaDespesa);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Despesa");
+        mnReceita.setText("Receita");
 
         mnCadastroReceita.setText("Cadastro");
-        jMenu2.add(mnCadastroReceita);
+        mnCadastroReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnCadastroReceitaActionPerformed(evt);
+            }
+        });
+        mnReceita.add(mnCadastroReceita);
 
         mnConsultaReceita.setText("Consulta");
+        mnConsultaReceita.setEnabled(false);
         mnConsultaReceita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnConsultaReceitaActionPerformed(evt);
             }
         });
-        jMenu2.add(mnConsultaReceita);
+        mnReceita.add(mnConsultaReceita);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(mnReceita);
+
+        mnDespesa.setText("Despesa");
+
+        mnCadastroDespesa.setText("Casdastro");
+        mnCadastroDespesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnCadastroDespesaActionPerformed(evt);
+            }
+        });
+        mnDespesa.add(mnCadastroDespesa);
+
+        mnConsultaDespesa.setText("Consulta");
+        mnConsultaDespesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnConsultaDespesaActionPerformed(evt);
+            }
+        });
+        mnDespesa.add(mnConsultaDespesa);
+
+        jMenuBar1.add(mnDespesa);
 
         mnSair.setText("Sair");
         mnSair.addActionListener(new java.awt.event.ActionListener() {
@@ -87,19 +106,49 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addComponent(jLabel1)
+                .addContainerGap(203, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(jLabel1)
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void mnCadastroReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadastroReceitaActionPerformed
+        TelaCadastroReceita tlCadastroReceita = new TelaCadastroReceita();
+        //Fecha a tela Atual
+        dispose();
+        tlCadastroReceita.setVisible(true);
+
+    }//GEN-LAST:event_mnCadastroReceitaActionPerformed
+
     private void mnConsultaReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConsultaReceitaActionPerformed
-        // TODO add your handling code here:
+        TelaConsultaReceita tlConsultaReceita = new TelaConsultaReceita();
+        dispose();
+        tlConsultaReceita.setVisible(true);
     }//GEN-LAST:event_mnConsultaReceitaActionPerformed
+
+    private void mnCadastroDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadastroDespesaActionPerformed
+        TelaCadastroDespesa tlCadastroDespesa = new TelaCadastroDespesa();
+        //Fecha a tela Atual
+        dispose();
+        tlCadastroDespesa.setVisible(true);
+    }//GEN-LAST:event_mnCadastroDespesaActionPerformed
+
+    private void mnConsultaDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConsultaDespesaActionPerformed
+        TelaConsultaDespesa tlConsultaDespesa = new TelaConsultaDespesa();
+        //Fecha a tela Atual
+        dispose();
+        tlConsultaDespesa.setVisible(true);
+    }//GEN-LAST:event_mnConsultaDespesaActionPerformed
 
     private void mnbtnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnbtnSairActionPerformed
         System.exit(0);
@@ -145,13 +194,14 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem mnCadastroDespesa;
     private javax.swing.JMenuItem mnCadastroReceita;
     private javax.swing.JMenuItem mnConsultaDespesa;
     private javax.swing.JMenuItem mnConsultaReceita;
+    private javax.swing.JMenu mnDespesa;
+    private javax.swing.JMenu mnReceita;
     private javax.swing.JMenu mnSair;
     private javax.swing.JMenuItem mnbtnSair;
     // End of variables declaration//GEN-END:variables

@@ -28,32 +28,78 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnLimparReceita = new javax.swing.JButton();
+        btnCadastrarReceita = new javax.swing.JButton();
+        txtValorReceita = new javax.swing.JTextField();
+        lblValorReceita = new javax.swing.JLabel();
+        lblTitleReceita = new javax.swing.JLabel();
+        txtTipoReceita = new javax.swing.JTextField();
+        lblDataReceita = new javax.swing.JLabel();
+        txtDataReceita = new javax.swing.JTextField();
+        lblTipoReceita = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        mnCadastroDespesa = new javax.swing.JMenuItem();
-        mnConsultaDespesa = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        mnReceita = new javax.swing.JMenu();
         mnCadastroReceita = new javax.swing.JMenuItem();
         mnConsultaReceita = new javax.swing.JMenuItem();
+        mnDespesa = new javax.swing.JMenu();
+        mnCadastroDespesa = new javax.swing.JMenuItem();
+        mnConsultaDespesa = new javax.swing.JMenuItem();
         mnSair = new javax.swing.JMenu();
         mnbtnSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Receita");
+        btnLimparReceita.setBackground(new java.awt.Color(102, 102, 102));
+        btnLimparReceita.setFont(new java.awt.Font("GalanoGrotesque-Medium", 0, 12)); // NOI18N
+        btnLimparReceita.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimparReceita.setText("Limpar");
+        btnLimparReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparReceitaActionPerformed(evt);
+            }
+        });
 
-        mnCadastroDespesa.setText("Casdastro");
-        jMenu1.add(mnCadastroDespesa);
+        btnCadastrarReceita.setBackground(new java.awt.Color(102, 102, 102));
+        btnCadastrarReceita.setFont(new java.awt.Font("GalanoGrotesque-Medium", 0, 12)); // NOI18N
+        btnCadastrarReceita.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadastrarReceita.setText("Cadastrar");
+        btnCadastrarReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarReceitaActionPerformed(evt);
+            }
+        });
 
-        mnConsultaDespesa.setText("Consulta");
-        jMenu1.add(mnConsultaDespesa);
+        txtValorReceita.setText("0,00");
 
-        jMenuBar1.add(jMenu1);
+        lblValorReceita.setFont(new java.awt.Font("GalanoGrotesque-ExtraLight", 0, 12)); // NOI18N
+        lblValorReceita.setText("Valor:");
 
-        jMenu2.setText("Despesa");
+        lblTitleReceita.setFont(new java.awt.Font("GalanoGrotesqueDEMO-Bold", 0, 24)); // NOI18N
+        lblTitleReceita.setForeground(new java.awt.Color(0, 153, 0));
+        lblTitleReceita.setText("Cadastro de Receita");
+
+        txtTipoReceita.setText("Ex: Cartão");
+
+        lblDataReceita.setFont(new java.awt.Font("GalanoGrotesque-ExtraLight", 0, 12)); // NOI18N
+        lblDataReceita.setText("Data");
+
+        txtDataReceita.setText("10/10/2000");
+        txtDataReceita.setToolTipText("10/10/2000");
+        txtDataReceita.setFocusable(false);
+
+        lblTipoReceita.setFont(new java.awt.Font("GalanoGrotesque-ExtraLight", 0, 12)); // NOI18N
+        lblTipoReceita.setText("Tipo de Receita:");
+
+        mnReceita.setText("Receita");
 
         mnCadastroReceita.setText("Cadastro");
-        jMenu2.add(mnCadastroReceita);
+        mnCadastroReceita.setEnabled(false);
+        mnCadastroReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnCadastroReceitaActionPerformed(evt);
+            }
+        });
+        mnReceita.add(mnCadastroReceita);
 
         mnConsultaReceita.setText("Consulta");
         mnConsultaReceita.addActionListener(new java.awt.event.ActionListener() {
@@ -61,9 +107,29 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
                 mnConsultaReceitaActionPerformed(evt);
             }
         });
-        jMenu2.add(mnConsultaReceita);
+        mnReceita.add(mnConsultaReceita);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(mnReceita);
+
+        mnDespesa.setText("Despesa");
+
+        mnCadastroDespesa.setText("Casdastro");
+        mnCadastroDespesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnCadastroDespesaActionPerformed(evt);
+            }
+        });
+        mnDespesa.add(mnCadastroDespesa);
+
+        mnConsultaDespesa.setText("Consulta");
+        mnConsultaDespesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnConsultaDespesaActionPerformed(evt);
+            }
+        });
+        mnDespesa.add(mnConsultaDespesa);
+
+        jMenuBar1.add(mnDespesa);
 
         mnSair.setText("Sair");
         mnSair.addActionListener(new java.awt.event.ActionListener() {
@@ -88,19 +154,95 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(100, Short.MAX_VALUE)
+                .addComponent(lblTitleReceita)
+                .addGap(60, 60, 60))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblValorReceita)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtValorReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblTipoReceita)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtTipoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblDataReceita)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtDataReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(btnLimparReceita)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCadastrarReceita)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(lblTitleReceita)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblValorReceita)
+                    .addComponent(txtValorReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTipoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTipoReceita))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDataReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDataReceita))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLimparReceita)
+                    .addComponent(btnCadastrarReceita))
+                .addGap(53, 53, 53))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mnConsultaReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConsultaReceitaActionPerformed
+    private void btnLimparReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparReceitaActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimparReceitaActionPerformed
+
+    private void btnCadastrarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarReceitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCadastrarReceitaActionPerformed
+
+    private void mnCadastroReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadastroReceitaActionPerformed
+        TelaCadastroReceita tlCadastroReceita = new TelaCadastroReceita();
+        //Fecha a tela Atual
+        dispose();
+        tlCadastroReceita.setVisible(true);
+
+    }//GEN-LAST:event_mnCadastroReceitaActionPerformed
+
+    private void mnConsultaReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConsultaReceitaActionPerformed
+        TelaConsultaReceita tlConsultaReceita = new TelaConsultaReceita();
+        dispose();
+        tlConsultaReceita.setVisible(true);
     }//GEN-LAST:event_mnConsultaReceitaActionPerformed
+
+    private void mnCadastroDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadastroDespesaActionPerformed
+        TelaCadastroDespesa tlCadastroDespesa = new TelaCadastroDespesa();
+        //Fecha a tela Atual
+        dispose();
+        tlCadastroDespesa.setVisible(true);
+    }//GEN-LAST:event_mnCadastroDespesaActionPerformed
+
+    private void mnConsultaDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConsultaDespesaActionPerformed
+        TelaConsultaDespesa tlConsultaDespesa = new TelaConsultaDespesa();
+        //Fecha a tela Atual
+        dispose();
+        tlConsultaDespesa.setVisible(true);
+    }//GEN-LAST:event_mnConsultaDespesaActionPerformed
 
     private void mnbtnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnbtnSairActionPerformed
         System.exit(0);
@@ -146,14 +288,23 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JButton btnCadastrarReceita;
+    private javax.swing.JButton btnLimparReceita;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel lblDataReceita;
+    private javax.swing.JLabel lblTipoReceita;
+    private javax.swing.JLabel lblTitleReceita;
+    private javax.swing.JLabel lblValorReceita;
     private javax.swing.JMenuItem mnCadastroDespesa;
     private javax.swing.JMenuItem mnCadastroReceita;
     private javax.swing.JMenuItem mnConsultaDespesa;
     private javax.swing.JMenuItem mnConsultaReceita;
+    private javax.swing.JMenu mnDespesa;
+    private javax.swing.JMenu mnReceita;
     private javax.swing.JMenu mnSair;
     private javax.swing.JMenuItem mnbtnSair;
+    private javax.swing.JTextField txtDataReceita;
+    private javax.swing.JTextField txtTipoReceita;
+    private javax.swing.JTextField txtValorReceita;
     // End of variables declaration//GEN-END:variables
 }
