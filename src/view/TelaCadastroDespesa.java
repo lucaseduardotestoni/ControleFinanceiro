@@ -23,7 +23,7 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
     Conta conta = new Conta();
     public TelaCadastroDespesa() {
         initComponents();
-         for(CategoriaReceita categoria : CategoriaReceita.values()){
+         for(CategoriaDespesa categoria : CategoriaDespesa.values()){
             tipoDespesa.addItem(categoria.name());
         }
     }
@@ -266,7 +266,7 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
         Despesa despesa = new Despesa();
         
         if(tipoDespesa.getSelectedItem() == null || dataDespesa.getText().trim().equals("") || valorDespesa.getText().trim().equals("")){
-            JOptionPane.showConfirmDialog(this.rootPane,"Preencha todos os campos");
+            JOptionPane.showMessageDialog(this.rootPane,"Preencha todos os campos");
         }else{
             despesa.setCategoria(CategoriaDespesa.valueOf(tipoDespesa.getSelectedItem().toString()));
             despesa.setValor(Double.parseDouble(valorDespesa.getText()));

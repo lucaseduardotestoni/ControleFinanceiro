@@ -295,7 +295,6 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
         if(tipoReceita.getSelectedItem() == null || dataReceita.getText().trim().equals("") || valorReceita.getText().trim().equals("")){
             JOptionPane.showMessageDialog(this.rootPane,"Preencha todos os campos");
         }else{
-            receita.setCategoria((CategoriaReceita) tipoReceita.getSelectedItem());
             receita.setCategoria(CategoriaReceita.valueOf(tipoReceita.getSelectedItem().toString()));
             receita.setValor(Double.parseDouble(valorReceita.getText()));
             String dataTexto = dataReceita.getText();
