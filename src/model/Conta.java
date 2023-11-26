@@ -14,13 +14,11 @@ public class Conta {
     private List<Despesa> despesas = new ArrayList<Despesa>();
 
     public Conta() {
-        try{
+
         ImportadorControleFinanceiro importador = new ImportadorControleFinanceiro();
         importador.processarArquivoDespesa();
         importador.processarArquivoReceita();
-        } catch(FileNotFoundException error){
-            System.out.println("Erro");
-        }
+
     }
 
     public double getSaldo() {
