@@ -13,8 +13,8 @@ import java.util.Date;
  */
 public abstract class Lancamento implements Comparable<Lancamento> {
 
-    private Date data;
-    private double valor;
+    protected Date data;
+    protected double valor;
 
     public Lancamento(double valor, Date dataDespesa) {
         this.data = dataDespesa;
@@ -41,4 +41,5 @@ public abstract class Lancamento implements Comparable<Lancamento> {
     public int compareTo(Lancamento l) {
         return data.compareTo(l.getData());
     }
+
 }

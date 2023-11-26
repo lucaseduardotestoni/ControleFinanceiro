@@ -26,4 +26,8 @@ public class Despesa extends Lancamento {
         this.Categoria = Categoria;
     }
 
+    @Override
+    public String toString() {
+        return "Despesa{" + "Categoria=" + Categoria + ", data=" + data + ", valor=" + valor + "}\n";
+    }
 }
