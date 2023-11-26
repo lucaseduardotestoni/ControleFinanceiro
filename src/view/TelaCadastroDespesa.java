@@ -268,7 +268,7 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
         if(tipoDespesa.getSelectedItem() == null || dataDespesa.getText().trim().equals("") || valorDespesa.getText().trim().equals("")){
             JOptionPane.showConfirmDialog(this.rootPane,"Preencha todos os campos");
         }else{
-            despesa.setCategoria((CategoriaDespesa) tipoDespesa.getSelectedItem());
+            despesa.setCategoria(CategoriaDespesa.valueOf(tipoDespesa.getSelectedItem().toString()));
             despesa.setValor(Double.parseDouble(valorDespesa.getText()));
             String dataTexto = dataDespesa.getText();
             SimpleDateFormat formatoData = new SimpleDateFormat("MM/dd/yyyy");

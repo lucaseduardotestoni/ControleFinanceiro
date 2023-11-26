@@ -293,9 +293,10 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
         Receita receita = new Receita();
         
         if(tipoReceita.getSelectedItem() == null || dataReceita.getText().trim().equals("") || valorReceita.getText().trim().equals("")){
-            JOptionPane.showConfirmDialog(this.rootPane,"Preencha todos os campos");
+            JOptionPane.showMessageDialog(this.rootPane,"Preencha todos os campos");
         }else{
             receita.setCategoria((CategoriaReceita) tipoReceita.getSelectedItem());
+            receita.setCategoria(CategoriaReceita.valueOf(tipoReceita.getSelectedItem().toString()));
             receita.setValor(Double.parseDouble(valorReceita.getText()));
             String dataTexto = dataReceita.getText();
             SimpleDateFormat formatoData = new SimpleDateFormat("MM/dd/yyyy");
