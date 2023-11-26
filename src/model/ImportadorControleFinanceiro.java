@@ -63,8 +63,8 @@ public class ImportadorControleFinanceiro {
     
     public void cadastrarDespesa(String linha){
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoDespesa, true))) {
-            writer.write(linha);
             writer.newLine(); 
+            writer.write(linha);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -72,8 +72,8 @@ public class ImportadorControleFinanceiro {
     
     public void cadastrarReceita(String linha){
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoReceita, true))) {
-            writer.write(linha);
             writer.newLine(); 
+            writer.write(linha);
         } catch (IOException e) {
             e.printStackTrace();
         }
