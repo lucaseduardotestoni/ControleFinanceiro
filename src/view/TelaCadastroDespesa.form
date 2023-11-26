@@ -119,9 +119,9 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="dataDespesa" min="-2" pref="85" max="-2" attributes="0"/>
                   <Component id="valorDespesa" min="-2" pref="85" max="-2" attributes="0"/>
                   <Component id="tipoDespesa" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                  <Component id="dataDespesa" min="-2" pref="85" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -132,17 +132,17 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Component id="lblTitleDespesa" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="30" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblValorDespesa" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="valorDespesa" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblValorDespesa" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="valorDespesa" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblTipoDespesa" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tipoDespesa" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace pref="23" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblDataDespesa" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="dataDespesa" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -222,15 +222,6 @@
         <Property name="text" type="java.lang.String" value="Data"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="dataDespesa">
-      <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="10/10/2000"/>
-        <Property name="focusable" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dataDespesaActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblTipoDespesa">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -251,6 +242,8 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="dataDespesa">
     </Component>
   </SubComponents>
 </Form>

@@ -152,8 +152,8 @@
               </Group>
               <EmptySpace pref="11" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="dataReceita" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblDataReceita" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dataReceita" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -233,15 +233,6 @@
         <Property name="text" type="java.lang.String" value="Data"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="dataReceita">
-      <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="10/10/2000"/>
-        <Property name="focusable" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dataReceitaActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblTipoReceita">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -262,6 +253,11 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="dataReceita">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dataReceitaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

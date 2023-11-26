@@ -43,9 +43,9 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
         lblValorDespesa = new javax.swing.JLabel();
         lblTitleDespesa = new javax.swing.JLabel();
         lblDataDespesa = new javax.swing.JLabel();
-        dataDespesa = new javax.swing.JTextField();
         lblTipoDespesa = new javax.swing.JLabel();
         tipoDespesa = new javax.swing.JComboBox<>();
+        dataDespesa = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnReceita = new javax.swing.JMenu();
         mnCadastroReceita = new javax.swing.JMenuItem();
@@ -92,14 +92,6 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
 
         lblDataDespesa.setFont(new java.awt.Font("GalanoGrotesque-ExtraLight", 0, 12)); // NOI18N
         lblDataDespesa.setText("Data");
-
-        dataDespesa.setToolTipText("10/10/2000");
-        dataDespesa.setFocusable(false);
-        dataDespesa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dataDespesaActionPerformed(evt);
-            }
-        });
 
         lblTipoDespesa.setFont(new java.awt.Font("GalanoGrotesque-ExtraLight", 0, 12)); // NOI18N
         lblTipoDespesa.setText("Tipo de Receita:");
@@ -193,9 +185,9 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
                     .addComponent(lblTipoDespesa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dataDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(valorDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tipoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tipoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dataDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -203,15 +195,15 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(lblTitleDespesa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblValorDespesa)
-                    .addComponent(valorDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblValorDespesa, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(valorDespesa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTipoDespesa)
                     .addComponent(tipoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDataDespesa)
                     .addComponent(dataDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -292,10 +284,6 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
         }
         conta.cadastrarDespesa(despesa);
     }//GEN-LAST:event_btnCadastrarDespesaMouseClicked
-
-    private void dataDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataDespesaActionPerformed
-        
-    }//GEN-LAST:event_dataDespesaActionPerformed
 
     private void tipoDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoDespesaActionPerformed
         // TODO add your handling code here:

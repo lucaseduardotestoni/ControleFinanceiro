@@ -49,9 +49,9 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
         lblValorReceita = new javax.swing.JLabel();
         lblTitleReceita = new javax.swing.JLabel();
         lblDataReceita = new javax.swing.JLabel();
-        dataReceita = new javax.swing.JTextField();
         lblTipoReceita = new javax.swing.JLabel();
         tipoReceita = new javax.swing.JComboBox<>();
+        dataReceita = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnReceita = new javax.swing.JMenu();
         mnCadastroReceita = new javax.swing.JMenuItem();
@@ -105,20 +105,18 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
         lblDataReceita.setFont(new java.awt.Font("GalanoGrotesque-ExtraLight", 0, 12)); // NOI18N
         lblDataReceita.setText("Data");
 
-        dataReceita.setToolTipText("10/10/2000");
-        dataReceita.setFocusable(false);
-        dataReceita.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dataReceitaActionPerformed(evt);
-            }
-        });
-
         lblTipoReceita.setFont(new java.awt.Font("GalanoGrotesque-ExtraLight", 0, 12)); // NOI18N
         lblTipoReceita.setText("Tipo de Receita:");
 
         tipoReceita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoReceitaActionPerformed(evt);
+            }
+        });
+
+        dataReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dataReceitaActionPerformed(evt);
             }
         });
 
@@ -230,8 +228,8 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
                     .addComponent(tipoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dataReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDataReceita))
+                    .addComponent(lblDataReceita)
+                    .addComponent(dataReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimparReceita)
@@ -287,10 +285,6 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
 
     }//GEN-LAST:event_mnSairActionPerformed
 
-    private void dataReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataReceitaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dataReceitaActionPerformed
-
     private void valorReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorReceitaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_valorReceitaActionPerformed
@@ -321,6 +315,10 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
     private void tipoReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoReceitaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tipoReceitaActionPerformed
+
+    private void dataReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataReceitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataReceitaActionPerformed
 
     /**
      * @param args the command line arguments
