@@ -1,7 +1,10 @@
 package model;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Date;
 import java.util.Map;
 import java.util.Scanner;
@@ -58,4 +61,31 @@ public class ImportadorControleFinanceiro {
             }
         }
     }
+    
+    public void cadastrarDespesa(String linha){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoDespesa, true))) {
+            writer.write(linha);
+            writer.newLine(); 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void cadastrarReceita(String linha){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoReceita, true))) {
+            writer.write(linha);
+            writer.newLine(); 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public File getArquivoDespesa() {
+        return arquivoDespesa;
+    }
+
+    public File getArquivoReceita() {
+        return arquivoReceita;
+    }
+    
 }

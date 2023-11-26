@@ -5,15 +5,21 @@
  */
 package view;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import model.CategoriaDespesa;
+import model.Conta;
+import model.Despesa;
+
 /**
  *
  * @author Lucas.Testoni
  */
 public class TelaCadastroDespesa extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CadastroDespesa
-     */
+    Conta conta = new Conta();
     public TelaCadastroDespesa() {
         initComponents();
     }
@@ -29,14 +35,13 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
 
         btnLimparDespesa = new javax.swing.JButton();
         btnCadastrarDespesa = new javax.swing.JButton();
-        txtValorDespesa = new javax.swing.JTextField();
+        valorDespesa = new javax.swing.JTextField();
         lblValorDespesa = new javax.swing.JLabel();
         lblTitleDespesa = new javax.swing.JLabel();
         lblDataDespesa = new javax.swing.JLabel();
-        txtDataDespesa = new javax.swing.JTextField();
+        dataDespesa = new javax.swing.JTextField();
         lblTipoDespesa = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblTipoDespesa = new javax.swing.JList<>();
+        tipoDespesa = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnReceita = new javax.swing.JMenu();
         mnCadastroReceita = new javax.swing.JMenuItem();
@@ -63,13 +68,16 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
         btnCadastrarDespesa.setFont(new java.awt.Font("GalanoGrotesque-Medium", 0, 12)); // NOI18N
         btnCadastrarDespesa.setForeground(new java.awt.Color(255, 255, 255));
         btnCadastrarDespesa.setText("Cadastrar");
+        btnCadastrarDespesa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCadastrarDespesaMouseClicked(evt);
+            }
+        });
         btnCadastrarDespesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarDespesaActionPerformed(evt);
             }
         });
-
-        txtValorDespesa.setText("0,00");
 
         lblValorDespesa.setFont(new java.awt.Font("GalanoGrotesque-ExtraLight", 0, 12)); // NOI18N
         lblValorDespesa.setText("Valor:");
@@ -81,19 +89,18 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
         lblDataDespesa.setFont(new java.awt.Font("GalanoGrotesque-ExtraLight", 0, 12)); // NOI18N
         lblDataDespesa.setText("Data");
 
-        txtDataDespesa.setText("10/10/2000");
-        txtDataDespesa.setToolTipText("10/10/2000");
-        txtDataDespesa.setFocusable(false);
+        dataDespesa.setToolTipText("10/10/2000");
+        dataDespesa.setFocusable(false);
+        dataDespesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dataDespesaActionPerformed(evt);
+            }
+        });
 
         lblTipoDespesa.setFont(new java.awt.Font("GalanoGrotesque-ExtraLight", 0, 12)); // NOI18N
         lblTipoDespesa.setText("Tipo de Receita:");
 
-        tblTipoDespesa.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(tblTipoDespesa);
+        tipoDespesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         mnReceita.setText("Receita");
 
@@ -178,9 +185,9 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
                     .addComponent(lblTipoDespesa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDataDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtValorDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dataDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valorDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -188,23 +195,18 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(lblTitleDespesa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblValorDespesa)
-                    .addComponent(txtValorDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(lblTipoDespesa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                    .addComponent(valorDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTipoDespesa)
+                    .addComponent(tipoDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDataDespesa)
-                    .addComponent(txtDataDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dataDespesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimparDespesa)
@@ -216,9 +218,8 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLimparDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparDespesaActionPerformed
-        txtDataDespesa.setText("");
-        txtValorDespesa.setText("");
-        tblTipoDespesa.clearSelection();
+        dataDespesa.setText("");
+        valorDespesa.setText("");
     }//GEN-LAST:event_btnLimparDespesaActionPerformed
 
     private void btnCadastrarDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarDespesaActionPerformed
@@ -226,17 +227,17 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrarDespesaActionPerformed
 
     private void mnCadastroReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadastroReceitaActionPerformed
-        TelaCadastroReceita tlCadastroReceita = new TelaCadastroReceita();
+        TelaCadastroDespesa tlCadastroDespesa = new TelaCadastroDespesa();
         //Fecha a tela Atual
         dispose();
-        tlCadastroReceita.setVisible(true);
+        tlCadastroDespesa.setVisible(true);
 
     }//GEN-LAST:event_mnCadastroReceitaActionPerformed
 
     private void mnConsultaReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConsultaReceitaActionPerformed
-        TelaConsultaReceita tlConsultaReceita = new TelaConsultaReceita();
+        TelaConsultaDespesa tlConsultaDespesa = new TelaConsultaDespesa();
         dispose();
-        tlConsultaReceita.setVisible(true);
+        tlConsultaDespesa.setVisible(true);
     }//GEN-LAST:event_mnConsultaReceitaActionPerformed
 
     private void mnCadastroDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadastroDespesaActionPerformed
@@ -260,6 +261,33 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
     private void mnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSairActionPerformed
 
     }//GEN-LAST:event_mnSairActionPerformed
+
+    private void btnCadastrarDespesaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarDespesaMouseClicked
+        Despesa despesa = new Despesa();
+        
+        if(tipoDespesa.getSelectedItem() == null || dataDespesa.getText().trim().equals("") || valorDespesa.getText().trim().equals("")){
+            JOptionPane.showConfirmDialog(this.rootPane,"Preencha todos os campos");
+        }else{
+            despesa.setCategoria((CategoriaDespesa) tipoDespesa.getSelectedItem());
+            despesa.setValor(Double.parseDouble(valorDespesa.getText()));
+            String dataTexto = dataDespesa.getText();
+            SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+            try {
+                Date data = formatoData.parse(dataTexto);
+                despesa.setData(data);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }            
+            JOptionPane.showMessageDialog(this.rootPane,"Despesa cadastrada com sucesso!");
+            dataDespesa.setText("");
+            valorDespesa.setText("");
+        }
+        conta.cadastrarDespesa(despesa);
+    }//GEN-LAST:event_btnCadastrarDespesaMouseClicked
+
+    private void dataDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataDespesaActionPerformed
+        
+    }//GEN-LAST:event_dataDespesaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -300,8 +328,8 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarDespesa;
     private javax.swing.JButton btnLimparDespesa;
+    private javax.swing.JTextField dataDespesa;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDataDespesa;
     private javax.swing.JLabel lblTipoDespesa;
     private javax.swing.JLabel lblTitleDespesa;
@@ -314,8 +342,7 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
     private javax.swing.JMenu mnReceita;
     private javax.swing.JMenu mnSair;
     private javax.swing.JMenuItem mnbtnSair;
-    private javax.swing.JList<String> tblTipoDespesa;
-    private javax.swing.JTextField txtDataDespesa;
-    private javax.swing.JTextField txtValorDespesa;
+    private javax.swing.JComboBox<String> tipoDespesa;
+    private javax.swing.JTextField valorDespesa;
     // End of variables declaration//GEN-END:variables
 }
