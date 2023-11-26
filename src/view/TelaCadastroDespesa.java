@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import model.CategoriaDespesa;
+import model.CategoriaReceita;
 import model.Conta;
 import model.Despesa;
 
@@ -22,6 +23,9 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
     Conta conta = new Conta();
     public TelaCadastroDespesa() {
         initComponents();
+         for(CategoriaReceita categoria : CategoriaReceita.values()){
+            tipoDespesa.addItem(categoria.name());
+        }
     }
 
     /**
@@ -100,7 +104,11 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
         lblTipoDespesa.setFont(new java.awt.Font("GalanoGrotesque-ExtraLight", 0, 12)); // NOI18N
         lblTipoDespesa.setText("Tipo de Receita:");
 
-        tipoDespesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tipoDespesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoDespesaActionPerformed(evt);
+            }
+        });
 
         mnReceita.setText("Receita");
 
@@ -288,6 +296,10 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
     private void dataDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataDespesaActionPerformed
         
     }//GEN-LAST:event_dataDespesaActionPerformed
+
+    private void tipoDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoDespesaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoDespesaActionPerformed
 
     /**
      * @param args the command line arguments
