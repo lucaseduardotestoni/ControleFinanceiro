@@ -54,7 +54,7 @@ public class ImportadorControleFinanceiro {
                 Receita receita = new Receita((dados[0]), dados[1], (new Date(dados[2])));
 
                 idReceita.put(receita, cont);
-
+                cont++;
             }
         }
     }
