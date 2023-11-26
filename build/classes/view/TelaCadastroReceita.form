@@ -95,39 +95,43 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="100" max="32767" attributes="0"/>
-              <Component id="lblTitleReceita" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="lblValorReceita" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txtValorReceita" min="-2" pref="85" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="lblTipoReceita" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtTipoReceita" min="-2" pref="85" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="lblDataReceita" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txtDataReceita" min="-2" pref="85" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="lblTitleReceita" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                      <Component id="btnLimparReceita" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnCadastrarReceita" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="lblValorReceita" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="valorReceita" min="-2" pref="85" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="lblTipoReceita" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="tipoReceita" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lblDataReceita" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="dataReceita" min="-2" pref="85" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                              <Component id="btnLimparReceita" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnCadastrarReceita" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -139,16 +143,16 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblValorReceita" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtValorReceita" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="valorReceita" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtTipoReceita" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblTipoReceita" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tipoReceita" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="11" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtDataReceita" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dataReceita" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblDataReceita" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -193,13 +197,14 @@
         <Property name="text" type="java.lang.String" value="Cadastrar"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCadastrarReceitaMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarReceitaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtValorReceita">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="0,00"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="valorReceita">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="valorReceitaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblValorReceita">
       <Properties>
@@ -220,11 +225,6 @@
         <Property name="text" type="java.lang.String" value="Cadastro de Receita"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtTipoReceita">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ex: Cart&#xe3;o"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblDataReceita">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -233,12 +233,14 @@
         <Property name="text" type="java.lang.String" value="Data"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtDataReceita">
+    <Component class="javax.swing.JTextField" name="dataReceita">
       <Properties>
-        <Property name="text" type="java.lang.String" value="10/10/2000"/>
         <Property name="toolTipText" type="java.lang.String" value="10/10/2000"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dataReceitaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblTipoReceita">
       <Properties>
@@ -247,6 +249,19 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Tipo de Receita:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="tipoReceita">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipoReceitaActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

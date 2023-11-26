@@ -1,5 +1,16 @@
 package view;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import model.CategoriaReceita;
+import model.Conta;
+import model.Receita;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,8 +26,12 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
     /**
      * Creates new form TelaCadastroReceita
      */
+    Conta conta = new Conta();
     public TelaCadastroReceita() {
         initComponents();
+        for(CategoriaReceita categoria : CategoriaReceita.values()){
+            tipoReceita.addItem(categoria.name());
+        }
     }
 
     /**
@@ -30,13 +45,13 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
 
         btnLimparReceita = new javax.swing.JButton();
         btnCadastrarReceita = new javax.swing.JButton();
-        txtValorReceita = new javax.swing.JTextField();
+        valorReceita = new javax.swing.JTextField();
         lblValorReceita = new javax.swing.JLabel();
         lblTitleReceita = new javax.swing.JLabel();
-        txtTipoReceita = new javax.swing.JTextField();
         lblDataReceita = new javax.swing.JLabel();
-        txtDataReceita = new javax.swing.JTextField();
+        dataReceita = new javax.swing.JTextField();
         lblTipoReceita = new javax.swing.JLabel();
+        tipoReceita = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnReceita = new javax.swing.JMenu();
         mnCadastroReceita = new javax.swing.JMenuItem();
@@ -63,13 +78,22 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
         btnCadastrarReceita.setFont(new java.awt.Font("GalanoGrotesque-Medium", 0, 12)); // NOI18N
         btnCadastrarReceita.setForeground(new java.awt.Color(255, 255, 255));
         btnCadastrarReceita.setText("Cadastrar");
+        btnCadastrarReceita.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCadastrarReceitaMouseClicked(evt);
+            }
+        });
         btnCadastrarReceita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarReceitaActionPerformed(evt);
             }
         });
 
-        txtValorReceita.setText("0,00");
+        valorReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valorReceitaActionPerformed(evt);
+            }
+        });
 
         lblValorReceita.setFont(new java.awt.Font("GalanoGrotesque-ExtraLight", 0, 12)); // NOI18N
         lblValorReceita.setText("Valor:");
@@ -78,17 +102,25 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
         lblTitleReceita.setForeground(new java.awt.Color(0, 153, 0));
         lblTitleReceita.setText("Cadastro de Receita");
 
-        txtTipoReceita.setText("Ex: Cartão");
-
         lblDataReceita.setFont(new java.awt.Font("GalanoGrotesque-ExtraLight", 0, 12)); // NOI18N
         lblDataReceita.setText("Data");
 
-        txtDataReceita.setText("10/10/2000");
-        txtDataReceita.setToolTipText("10/10/2000");
-        txtDataReceita.setFocusable(false);
+        dataReceita.setToolTipText("10/10/2000");
+        dataReceita.setFocusable(false);
+        dataReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dataReceitaActionPerformed(evt);
+            }
+        });
 
         lblTipoReceita.setFont(new java.awt.Font("GalanoGrotesque-ExtraLight", 0, 12)); // NOI18N
         lblTipoReceita.setText("Tipo de Receita:");
+
+        tipoReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoReceitaActionPerformed(evt);
+            }
+        });
 
         mnReceita.setText("Receita");
 
@@ -154,32 +186,34 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(100, Short.MAX_VALUE)
-                .addComponent(lblTitleReceita)
-                .addGap(60, 60, 60))
             .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblValorReceita)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtValorReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblTipoReceita)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtTipoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblDataReceita)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtDataReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(btnLimparReceita)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCadastrarReceita)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblTitleReceita))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblValorReceita)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(valorReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblTipoReceita)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tipoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(13, 13, 13))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblDataReceita)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(dataReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addComponent(btnLimparReceita)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCadastrarReceita)))))
+                .addGap(67, 67, 67))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,14 +223,14 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblValorReceita)
-                    .addComponent(txtValorReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(valorReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTipoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTipoReceita))
+                    .addComponent(lblTipoReceita)
+                    .addComponent(tipoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDataReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dataReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDataReceita))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -209,7 +243,8 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLimparReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparReceitaActionPerformed
-        // TODO add your handling code here:
+        valorReceita.setText("");
+        dataReceita.setText("");
     }//GEN-LAST:event_btnLimparReceitaActionPerformed
 
     private void btnCadastrarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarReceitaActionPerformed
@@ -252,6 +287,41 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
 
     }//GEN-LAST:event_mnSairActionPerformed
 
+    private void dataReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataReceitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataReceitaActionPerformed
+
+    private void valorReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorReceitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_valorReceitaActionPerformed
+
+    private void btnCadastrarReceitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarReceitaMouseClicked
+        Receita receita = new Receita();
+        
+        if(tipoReceita.getSelectedItem() == null || dataReceita.getText().trim().equals("") || valorReceita.getText().trim().equals("")){
+            JOptionPane.showConfirmDialog(this.rootPane,"Preencha todos os campos");
+        }else{
+            receita.setCategoria((CategoriaReceita) tipoReceita.getSelectedItem());
+            receita.setValor(Double.parseDouble(valorReceita.getText()));
+            String dataTexto = dataReceita.getText();
+            SimpleDateFormat formatoData = new SimpleDateFormat("MM/dd/yyyy");
+            try {
+                Date data = formatoData.parse(dataTexto);
+                receita.setData(data);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }            
+            JOptionPane.showMessageDialog(this.rootPane,"Despesa cadastrada com sucesso!");
+            dataReceita.setText("");
+            valorReceita.setText("");
+        }
+        conta.cadastrarReceita(receita);
+    }//GEN-LAST:event_btnCadastrarReceitaMouseClicked
+
+    private void tipoReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoReceitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoReceitaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -290,6 +360,7 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarReceita;
     private javax.swing.JButton btnLimparReceita;
+    private javax.swing.JTextField dataReceita;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lblDataReceita;
     private javax.swing.JLabel lblTipoReceita;
@@ -303,8 +374,7 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
     private javax.swing.JMenu mnReceita;
     private javax.swing.JMenu mnSair;
     private javax.swing.JMenuItem mnbtnSair;
-    private javax.swing.JTextField txtDataReceita;
-    private javax.swing.JTextField txtTipoReceita;
-    private javax.swing.JTextField txtValorReceita;
+    private javax.swing.JComboBox<String> tipoReceita;
+    private javax.swing.JTextField valorReceita;
     // End of variables declaration//GEN-END:variables
 }

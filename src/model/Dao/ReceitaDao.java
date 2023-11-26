@@ -5,11 +5,11 @@ import model.CategoriaDespesa;
 import model.CategoriaReceita;
 import model.Lancamento;
 
-public class Receita extends Lancamento {
+public class ReceitaDao extends Lancamento {
 
     private CategoriaReceita Categoria;
 
-    public Receita(CategoriaReceita categoria, double valor, Date dataReceita) {
+    public ReceitaDao(CategoriaReceita categoria, double valor, Date dataReceita) {
         super(valor, dataReceita);
         this.Categoria = categoria;
     }

@@ -1,22 +1,27 @@
 package model;
 
 import java.util.List;
+import java.util.Date;
+import model.Despesa;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
-import model.Dao.Despesa;
-import model.Dao.Receita;
+import model.Dao.DespesaDao;
+import model.Dao.ReceitaDao;
+import model.Receita;
 
 public class Conta {
 
     private double saldo;
-    private List<Receita> receitas = new ArrayList<Receita>();
-    private List<Despesa> despesas = new ArrayList<Despesa>();
+    private List<ReceitaDao> receitas;
+    private List<DespesaDao> despesas;
+    ImportadorControleFinanceiro importador;
 
     public Conta() {
-        ImportadorControleFinanceiro importador = new ImportadorControleFinanceiro();
-        despesas = importador.processarArquivoDespesa();
-        receitas = importador.processarArquivoReceita();
+        importador = new ImportadorControleFinanceiro();
+        importador.processarArquivoDespesa();
+        importador.processarArquivoReceita();
+        receitas = new ArrayList<>();
+        despesas = new ArrayList<>();
     }
 
     public double getSaldo() {
@@ -27,11 +32,11 @@ public class Conta {
         this.saldo = saldo;
     }
 
-    public List<Receita> listarReceitas() {
+    public List<ReceitaDao> listarReceitas() {
         return receitas;
     }
 
-    public List<Despesa> listarDespesas() {
+    public List<DespesaDao> listarDespesas() {
         return despesas;
     }
 
@@ -49,13 +54,13 @@ public class Conta {
         Date dataAtual = new Date();
 
         // Somar receitas com data até hoje
-        for (Receita receita : receitas) {
+        for (ReceitaDao receita : receitas) {
             if (receita.getData().before(dataAtual) || receita.getData().equals(dataAtual)) {
                 saldoAtual += receita.getValor();
             }
         }
         // Subtrair despesas com data até hoje
-        for (Despesa despesa : despesas) {
+        for (DespesaDao despesa : despesas) {
             if (despesa.getData().before(dataAtual) || despesa.getData().equals(dataAtual)) {
                 saldoAtual -= despesa.getValor();
             }
@@ -70,13 +75,21 @@ public class Conta {
         Date dataAtual = new Date();
 
         // Somar receitas com data até hoje
-        for (Receita receita : receitas) {
+        for (ReceitaDao receita : receitas) {
             saldoAtual += receita.getValor();
         }
         // Subtrair despesas com data até hoje
-        for (Despesa despesa : despesas) {
+        for (DespesaDao despesa : despesas) {
             saldoAtual -= despesa.getValor();
         }
         return saldoAtual;
+    }
+
+    public void cadastrarDespesa(Despesa despesa) {
+        importador.cadastrarDespesa(despesa.toString());
+    }
+
+    public void cadastrarReceita(Receita receita) {
+        importador.cadastrarReceita(receita.toString());
     }
 }

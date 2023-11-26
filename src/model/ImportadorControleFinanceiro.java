@@ -1,21 +1,24 @@
 package model;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-import model.Dao.Despesa;
-import model.Dao.Receita;
+import model.Dao.DespesaDao;
+import model.Dao.ReceitaDao;
 
 public class ImportadorControleFinanceiro {
 
     private File arquivoDespesa = (new File("Dados\\Despesas.csv"));
     private File arquivoReceita = (new File("Dados\\Receita.csv"));
 
-    public List<Despesa> processarArquivoDespesa() {
-        List<Despesa> despesas = new ArrayList<Despesa>();
+    public List<DespesaDao> processarArquivoDespesa() {
+        List<DespesaDao> despesas = new ArrayList<DespesaDao>();
         try (Scanner sc = new Scanner(arquivoDespesa, "UTF-8")) {
             if (sc.hasNextLine()) {
                 sc.nextLine();
@@ -26,7 +29,7 @@ public class ImportadorControleFinanceiro {
                 //Categoria da Receita; Valor; Data	
                 String[] dados = linha.split(";");
 
-                Despesa despesa = new Despesa(CategoriaDespesa.valueOf(dados[0]), Double.parseDouble(dados[1]), (new Date(dados[2])));
+                DespesaDao despesa = new DespesaDao(CategoriaDespesa.valueOf(dados[0]), Double.parseDouble(dados[1]), (new Date(dados[2])));
 
                 despesas.add(despesa);
             }
@@ -36,8 +39,8 @@ public class ImportadorControleFinanceiro {
         return despesas;
     }
 
-    public List<Receita> processarArquivoReceita() {
-        List<Receita> receitas = new ArrayList<Receita>();
+    public List<ReceitaDao> processarArquivoReceita() {
+        List<ReceitaDao> receitas = new ArrayList<ReceitaDao>();
         try (Scanner sc = new Scanner(arquivoReceita, "UTF-8")) {
             if (sc.hasNextLine()) {
                 sc.nextLine();
@@ -49,7 +52,7 @@ public class ImportadorControleFinanceiro {
                 //Salário Tech;3500;Empresa;25/03/2023
                 String[] dados = linha.split(";");
 
-                Receita receita = new Receita(CategoriaReceita.valueOf(dados[0]), Double.parseDouble(dados[1]), (new Date(dados[2])));
+                ReceitaDao receita = new ReceitaDao(CategoriaReceita.valueOf(dados[0]), Double.parseDouble(dados[1]), (new Date(dados[2])));
                 receitas.add(receita);
             }
         } catch (FileNotFoundException e) {
@@ -57,4 +60,31 @@ public class ImportadorControleFinanceiro {
         }
         return receitas;
     }
+    
+    public void cadastrarDespesa(String linha){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoDespesa, true))) {
+            writer.write(linha);
+            writer.newLine(); 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void cadastrarReceita(String linha){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoReceita, true))) {
+            writer.write(linha);
+            writer.newLine(); 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public File getArquivoDespesa() {
+        return arquivoDespesa;
+    }
+
+    public File getArquivoReceita() {
+        return arquivoReceita;
+    }
+    
 }

@@ -13,11 +13,11 @@ import model.Lancamento;
  *
  * @author Lucas.Testoni
  */
-public class Despesa extends Lancamento {
+public class DespesaDao extends Lancamento {
 
     private CategoriaDespesa Categoria;
 
-    public Despesa(CategoriaDespesa categoria, double valor, Date dataDespesa) {
+    public DespesaDao(CategoriaDespesa categoria, double valor, Date dataDespesa) {
         super(valor, dataDespesa);
         this.Categoria = categoria;
     }
