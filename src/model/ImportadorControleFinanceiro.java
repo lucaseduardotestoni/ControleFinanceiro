@@ -5,61 +5,60 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Map;
+import java.util.List;
 import java.util.Scanner;
-import model.Dao.Despesa;
-import model.Dao.Receita;
+import model.Dao.DespesaDao;
+import model.Dao.ReceitaDao;
 
 public class ImportadorControleFinanceiro {
 
     private File arquivoDespesa = (new File("Dados\\Despesas.csv"));
     private File arquivoReceita = (new File("Dados\\Receita.csv"));
 
-    private Map<Despesa, Integer> idDespesa;
-    private Map<Receita, Integer> idReceita;
-
-    public void processarArquivoDespesa() throws FileNotFoundException {
-
+    public List<DespesaDao> processarArquivoDespesa() {
+        List<DespesaDao> despesas = new ArrayList<DespesaDao>();
         try (Scanner sc = new Scanner(arquivoDespesa, "UTF-8")) {
             if (sc.hasNextLine()) {
                 sc.nextLine();
             }
-            int cont = 0;
-
             while (sc.hasNextLine()) {
                 String linha = sc.nextLine();
 
                 //Categoria da Receita; Valor; Data	
                 String[] dados = linha.split(";");
 
-                Despesa despesa = new Despesa((dados[0]), dados[1], (new Date(dados[2])));
+                DespesaDao despesa = new DespesaDao(CategoriaDespesa.valueOf(dados[0]), Double.parseDouble(dados[1]), (new Date(dados[2])));
 
-                idDespesa.put(despesa, cont);
-                cont++;
+                despesas.add(despesa);
             }
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
         }
+        return despesas;
     }
 
-    public void processarArquivoReceita() throws FileNotFoundException {
-
+    public List<ReceitaDao> processarArquivoReceita() {
+        List<ReceitaDao> receitas = new ArrayList<ReceitaDao>();
         try (Scanner sc = new Scanner(arquivoReceita, "UTF-8")) {
             if (sc.hasNextLine()) {
                 sc.nextLine();
             }
-            int cont = 0;
+
             while (sc.hasNextLine()) {
                 String linha = sc.nextLine();
 
                 //Salário Tech;3500;Empresa;25/03/2023
                 String[] dados = linha.split(";");
 
-                Receita receita = new Receita((dados[0]), dados[1], (new Date(dados[2])));
-
-                idReceita.put(receita, cont);
-
+                ReceitaDao receita = new ReceitaDao(CategoriaReceita.valueOf(dados[0]), Double.parseDouble(dados[1]), (new Date(dados[2])));
+                receitas.add(receita);
             }
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
         }
+        return receitas;
     }
     
     public void cadastrarDespesa(String linha){

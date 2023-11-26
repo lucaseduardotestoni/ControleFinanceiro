@@ -1,26 +1,30 @@
-
 package model;
 
+import java.util.List;
 import java.io.FileNotFoundException;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Despesa;
+import java.util.ArrayList;
+import java.util.Collections;
+import model.Receita;
+import model.Dao.DespesaDao;
+import model.Dao.ReceitaDao;
 
 public class Conta {
+
     private double saldo;
-    private Map<Receita, Integer> receitas;
-    private Map<Despesa, Integer> despesa;
+    private List<Receita> receitas = new ArrayList<ReceitaDao>();
+    private List<Despesa> despesas = new ArrayList<DespesaDao>();
     ImportadorControleFinanceiro importador;
     
-    public Conta (){
-        try {
-            importador = new ImportadorControleFinanceiro();
-            importador.processarArquivoDespesa();
-            importador.processarArquivoReceita();
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        }
+    public Conta() {
+        importador = new ImportadorControleFinanceiro();
+        importador.processarArquivoDespesa();
+        importador.processarArquivoReceita();
+
     }
 
     public double getSaldo() {
@@ -31,17 +35,20 @@ public class Conta {
         this.saldo = saldo;
     }
 
-    public Map<Receita, Integer> listarReceitas() {
+    public List<Receita> listarReceitas() {
         return receitas;
     }
 
-    public Map<Despesa, Integer> listarDespesas() {
-        return despesa;
+    public List<Despesa> listarDespesas() {
+        return despesas;
     }
-    
-    public ArrayList<> listarLancamentos() {
-        
-        return despesa;
+
+    public List<Lancamento> listarLancamentos() {
+        List<Lancamento> lancamentos = new ArrayList<>();
+        lancamentos.addAll(receitas);
+        lancamentos.addAll(despesas);
+        Collections.sort(lancamentos);
+        return lancamentos;
     }
     
     public void cadastrarDespesa(Despesa despesa){
@@ -51,5 +58,4 @@ public class Conta {
     public void cadastrarReceita(Receita receita){
         importador.cadastrarReceita(receita.toString());
     }
-    
 }
