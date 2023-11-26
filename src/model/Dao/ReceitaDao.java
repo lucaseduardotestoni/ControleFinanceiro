@@ -1,7 +1,7 @@
 package model.Dao;
 
 import java.util.Date;
-import model.CategoriaReceita;
+import model.Enums.CategoriaReceita;
 import model.Lancamento;
 
 public class ReceitaDao extends Lancamento {

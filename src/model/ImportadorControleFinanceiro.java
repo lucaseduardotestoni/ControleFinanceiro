@@ -1,5 +1,7 @@
 package model;
 
+import model.Enums.CategoriaDespesa;
+import model.Enums.CategoriaReceita;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;

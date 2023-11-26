@@ -1,7 +1,7 @@
 package model;
 
 import java.text.SimpleDateFormat;
-import model.CategoriaDespesa;
+import model.Enums.CategoriaDespesa;
 import java.util.Date;
 
 public class Despesa {

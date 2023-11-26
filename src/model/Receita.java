@@ -5,7 +5,7 @@
 package model;
 
 import java.text.SimpleDateFormat;
-import model.CategoriaReceita;
+import model.Enums.CategoriaReceita;
 import java.util.Date;
 
 /**
