@@ -271,7 +271,7 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
             despesa.setCategoria((CategoriaDespesa) tipoDespesa.getSelectedItem());
             despesa.setValor(Double.parseDouble(valorDespesa.getText()));
             String dataTexto = dataDespesa.getText();
-            SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat formatoData = new SimpleDateFormat("MM/dd/yyyy");
             try {
                 Date data = formatoData.parse(dataTexto);
                 despesa.setData(data);

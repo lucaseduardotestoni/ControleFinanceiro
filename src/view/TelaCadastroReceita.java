@@ -304,7 +304,7 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
             receita.setCategoria((CategoriaReceita) tipoReceita.getSelectedItem());
             receita.setValor(Double.parseDouble(valorReceita.getText()));
             String dataTexto = dataReceita.getText();
-            SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat formatoData = new SimpleDateFormat("MM/dd/yyyy");
             try {
                 Date data = formatoData.parse(dataTexto);
                 receita.setData(data);
