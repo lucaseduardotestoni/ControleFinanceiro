@@ -18,7 +18,7 @@ public class ImportadorControleFinanceiro {
     private File arquivoReceita = (new File("Dados\\Receita.csv"));
 
     public List<DespesaDao> processarArquivoDespesa() {
-        List<DespesaDao> despesas = new ArrayList<DespesaDao>();
+        List<DespesaDao> despesas = new ArrayList<>();
         try (Scanner sc = new Scanner(arquivoDespesa, "UTF-8")) {
             if (sc.hasNextLine()) {
                 sc.nextLine();
@@ -30,7 +30,7 @@ public class ImportadorControleFinanceiro {
                 String[] dados = linha.split(";");
 
                 DespesaDao despesa = new DespesaDao(CategoriaDespesa.valueOf(dados[0]), Double.parseDouble(dados[1]), (new Date(dados[2])));
-
+                System.out.println(despesa);
                 despesas.add(despesa);
             }
         } catch (FileNotFoundException e) {
@@ -40,7 +40,7 @@ public class ImportadorControleFinanceiro {
     }
 
     public List<ReceitaDao> processarArquivoReceita() {
-        List<ReceitaDao> receitas = new ArrayList<ReceitaDao>();
+        List<ReceitaDao> receitas = new ArrayList<>();
         try (Scanner sc = new Scanner(arquivoReceita, "UTF-8")) {
             if (sc.hasNextLine()) {
                 sc.nextLine();
@@ -53,6 +53,7 @@ public class ImportadorControleFinanceiro {
                 String[] dados = linha.split(";");
 
                 ReceitaDao receita = new ReceitaDao(CategoriaReceita.valueOf(dados[0]), Double.parseDouble(dados[1]), (new Date(dados[2])));
+                
                 receitas.add(receita);
             }
         } catch (FileNotFoundException e) {
@@ -60,19 +61,19 @@ public class ImportadorControleFinanceiro {
         }
         return receitas;
     }
-    
-    public void cadastrarDespesa(String linha){
+
+    public void cadastrarDespesa(String linha) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoDespesa, true))) {
-            writer.newLine(); 
+            writer.newLine();
             writer.write(linha);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    public void cadastrarReceita(String linha){
+
+    public void cadastrarReceita(String linha) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoReceita, true))) {
-            writer.newLine(); 
+            writer.newLine();
             writer.write(linha);
         } catch (IOException e) {
             e.printStackTrace();
@@ -86,5 +87,5 @@ public class ImportadorControleFinanceiro {
     public File getArquivoReceita() {
         return arquivoReceita;
     }
-    
+
 }

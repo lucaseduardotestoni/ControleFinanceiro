@@ -23,9 +23,11 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
     Conta conta = new Conta();
     public TelaCadastroDespesa() {
         initComponents();
-         for(CategoriaDespesa categoria : CategoriaDespesa.values()){
+        
+        for(CategoriaDespesa categoria : CategoriaDespesa.values()){
             tipoDespesa.addItem(categoria.name());
         }
+
     }
 
     /**
@@ -283,6 +285,7 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
             valorDespesa.setText("");
         }
         conta.cadastrarDespesa(despesa);
+        
     }//GEN-LAST:event_btnCadastrarDespesaMouseClicked
 
     private void tipoDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoDespesaActionPerformed

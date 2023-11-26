@@ -11,8 +11,8 @@ public class App {
 
     public static void main(String[] args) {
         Conta conta1 = new Conta();
-        System.out.println(conta1.consultarSaldoAtual());
-        System.out.println(conta1.consultarSaldoTotal());
+        System.out.println(conta1.listarDespesas());
+        System.out.println(conta1.listarReceitas());        
 
     }
 

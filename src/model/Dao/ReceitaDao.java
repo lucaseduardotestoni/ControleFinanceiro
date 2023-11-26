@@ -1,7 +1,6 @@
 package model.Dao;
 
 import java.util.Date;
-import model.CategoriaDespesa;
 import model.CategoriaReceita;
 import model.Lancamento;
 
