@@ -1,4 +1,3 @@
-
 package model;
 
 import java.util.Date;
@@ -8,8 +7,12 @@ public abstract class Lancamento implements Comparable<Lancamento> {
     protected Date data;
     protected double valor;
 
-    public Lancamento(double valor, Date dataDespesa) {
-        this.data = dataDespesa;
+    public Lancamento() {
+
+    }
+
+    public Lancamento(double valor, Date data) {
+        this.data = data;
         this.valor = valor;
     }
 
