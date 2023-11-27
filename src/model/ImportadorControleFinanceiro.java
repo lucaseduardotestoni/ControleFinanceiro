@@ -29,7 +29,6 @@ public class ImportadorControleFinanceiro {
                 String[] dados = linha.split(";");
 
                 Despesa despesa = new Despesa(CategoriaDespesa.valueOf(dados[0]), Double.parseDouble(dados[1]), (new Date(dados[2])));
-                System.out.println(despesa);
                 despesas.add(despesa);
             }
         } catch (FileNotFoundException e) {
@@ -62,7 +61,6 @@ public class ImportadorControleFinanceiro {
 
     public void cadastrarDespesa(String linha) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoDespesa, true))) {
-            writer.newLine();
             writer.write(linha);
         } catch (IOException e) {
             e.printStackTrace();
@@ -71,7 +69,6 @@ public class ImportadorControleFinanceiro {
 
     public void cadastrarReceita(String linha) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoReceita, true))) {
-            writer.newLine();
             writer.write(linha);
         } catch (IOException e) {
             e.printStackTrace();

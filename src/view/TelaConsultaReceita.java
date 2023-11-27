@@ -8,13 +8,13 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
 
     public TelaConsultaReceita() {
         initComponents();
-        
         Conta conta = new Conta();
         List<Receita> receitas = conta.listarReceitas();
         StringBuffer text = new StringBuffer("");
-        for(Receita receita : receitas){
+        for (Receita receita : receitas) {
             text.append("Data: ").append(receita.getData()).append(" Valor: ").append(receita.getValor()).append("\n");
         }
+
         consultaReceitas.setText(text.toString());
     }
 
@@ -22,8 +22,9 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        consultaReceitas = new javax.swing.JTextField();
+        lblTitleReceita = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        consultaReceitas = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnReceita = new javax.swing.JMenu();
         mnCadastroReceita = new javax.swing.JMenuItem();
@@ -36,7 +37,13 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Receitas");
+        lblTitleReceita.setFont(new java.awt.Font("GalanoGrotesqueDEMO-Bold", 0, 24)); // NOI18N
+        lblTitleReceita.setForeground(new java.awt.Color(0, 153, 0));
+        lblTitleReceita.setText("Consulta de Receita");
+
+        consultaReceitas.setColumns(20);
+        consultaReceitas.setRows(5);
+        jScrollPane1.setViewportView(consultaReceitas);
 
         mnReceita.setText("Receita");
 
@@ -103,21 +110,21 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(161, 161, 161)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(consultaReceitas)
+                .addGap(84, 84, 84)
+                .addComponent(lblTitleReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(consultaReceitas, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(lblTitleReceita)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,7 +132,7 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
 
     private void mnCadastroReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadastroReceitaActionPerformed
         TelaCadastroReceita tlCadastroReceita = new TelaCadastroReceita();
-        
+
         dispose();
         tlCadastroReceita.setVisible(true);
 
@@ -133,7 +140,7 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
 
     private void mnConsultaReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConsultaReceitaActionPerformed
         TelaConsultaReceita tlConsultaReceita = new TelaConsultaReceita();
-        
+
         dispose();
         tlConsultaReceita.setVisible(true);
     }//GEN-LAST:event_mnConsultaReceitaActionPerformed
@@ -169,9 +176,10 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField consultaReceitas;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextArea consultaReceitas;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTitleReceita;
     private javax.swing.JMenuItem mnCadastroDespesa;
     private javax.swing.JMenuItem mnCadastroReceita;
     private javax.swing.JMenuItem mnConsultaDespesa;

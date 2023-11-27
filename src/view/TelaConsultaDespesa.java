@@ -11,10 +11,10 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
         Conta conta = new Conta();
         List<Despesa> despesas = conta.listarDespesas();
         StringBuffer text = new StringBuffer("");
-        for(Despesa despesa : despesas){
+        for (Despesa despesa : despesas) {
             text.append("Data: ").append(despesa.getData()).append(" Valor: ").append(despesa.getValor()).append("\n");
         }
-        
+
         consultaDespesas.setText(text.toString());
     }
 
@@ -24,7 +24,7 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         consultaDespesas = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
+        lblTitleDespesa = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnReceita = new javax.swing.JMenu();
         mnCadastroReceita = new javax.swing.JMenuItem();
@@ -41,7 +41,9 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
         consultaDespesas.setRows(5);
         jScrollPane1.setViewportView(consultaDespesas);
 
-        jLabel2.setText("Despesas");
+        lblTitleDespesa.setFont(new java.awt.Font("GalanoGrotesqueDEMO-Bold", 0, 24)); // NOI18N
+        lblTitleDespesa.setForeground(new java.awt.Color(204, 0, 0));
+        lblTitleDespesa.setText("Consulta de Despesa");
 
         mnReceita.setText("Receita");
 
@@ -109,19 +111,18 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(166, 166, 166)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addGap(81, 81, 81)
+                .addComponent(lblTitleDespesa)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addComponent(lblTitleDespesa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -139,7 +140,7 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
 
     private void mnConsultaReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConsultaReceitaActionPerformed
         TelaConsultaReceita tlConsultaReceita = new TelaConsultaReceita();
-        
+
         dispose();
         tlConsultaReceita.setVisible(true);
     }//GEN-LAST:event_mnConsultaReceitaActionPerformed
@@ -153,7 +154,7 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
 
     private void mnConsultaDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConsultaDespesaActionPerformed
         TelaConsultaDespesa tlConsultaDespesa = new TelaConsultaDespesa();
-        
+
         dispose();
         tlConsultaDespesa.setVisible(true);
     }//GEN-LAST:event_mnConsultaDespesaActionPerformed
@@ -176,9 +177,9 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea consultaDespesas;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTitleDespesa;
     private javax.swing.JMenuItem mnCadastroDespesa;
     private javax.swing.JMenuItem mnCadastroReceita;
     private javax.swing.JMenuItem mnConsultaDespesa;
