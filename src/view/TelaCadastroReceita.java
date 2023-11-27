@@ -38,6 +38,8 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
         mnDespesa = new javax.swing.JMenu();
         mnCadastroDespesa = new javax.swing.JMenuItem();
         mnConsultaDespesa = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         mnSair = new javax.swing.JMenu();
         mnbtnSair = new javax.swing.JMenuItem();
 
@@ -140,6 +142,18 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
 
         jMenuBar1.add(mnDespesa);
 
+        jMenu1.setText("Lançamentos");
+
+        jMenuItem1.setText("Consulta");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
         mnSair.setText("Sair");
         mnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,54 +180,52 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblTitleReceita))
+                        .addGap(68, 68, 68)
+                        .addComponent(btnLimparReceita)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCadastrarReceita))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblValorReceita)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(valorReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblTipoReceita)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(tipoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(13, 13, 13))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblDataReceita)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(dataReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTitleReceita)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addComponent(btnLimparReceita)
+                                .addComponent(lblValorReceita)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnCadastrarReceita)))))
-                .addGap(67, 67, 67))
+                                .addComponent(valorReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(66, 66, 66))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblDataReceita)
+                                    .addComponent(lblTipoReceita))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tipoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dataReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(50, 50, 50)))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(20, 20, 20)
                 .addComponent(lblTitleReceita)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblValorReceita)
                     .addComponent(valorReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTipoReceita)
                     .addComponent(tipoReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDataReceita)
                     .addComponent(dataReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimparReceita)
                     .addComponent(btnCadastrarReceita))
-                .addGap(53, 53, 53))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -227,43 +239,6 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
     private void btnCadastrarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarReceitaActionPerformed
 
     }//GEN-LAST:event_btnCadastrarReceitaActionPerformed
-
-    private void mnCadastroReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadastroReceitaActionPerformed
-        TelaCadastroReceita tlCadastroReceita = new TelaCadastroReceita();
-
-        dispose();
-        tlCadastroReceita.setVisible(true);
-
-    }//GEN-LAST:event_mnCadastroReceitaActionPerformed
-
-    private void mnConsultaReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConsultaReceitaActionPerformed
-        TelaConsultaReceita tlConsultaReceita = new TelaConsultaReceita();
-        
-        dispose();
-        tlConsultaReceita.setVisible(true);
-    }//GEN-LAST:event_mnConsultaReceitaActionPerformed
-
-    private void mnCadastroDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadastroDespesaActionPerformed
-        TelaCadastroDespesa tlCadastroDespesa = new TelaCadastroDespesa();
-
-        dispose();
-        tlCadastroDespesa.setVisible(true);
-    }//GEN-LAST:event_mnCadastroDespesaActionPerformed
-
-    private void mnConsultaDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConsultaDespesaActionPerformed
-        TelaConsultaDespesa tlConsultaDespesa = new TelaConsultaDespesa();
-
-        dispose();
-        tlConsultaDespesa.setVisible(true);
-    }//GEN-LAST:event_mnConsultaDespesaActionPerformed
-
-    private void mnbtnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnbtnSairActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_mnbtnSairActionPerformed
-
-    private void mnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSairActionPerformed
-
-    }//GEN-LAST:event_mnSairActionPerformed
 
     private void valorReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorReceitaActionPerformed
 
@@ -300,6 +275,49 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
 
     }//GEN-LAST:event_dataReceitaActionPerformed
 
+    private void mnCadastroReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadastroReceitaActionPerformed
+        TelaCadastroReceita tlCadastroReceita = new TelaCadastroReceita();
+
+        dispose();
+        tlCadastroReceita.setVisible(true);
+    }//GEN-LAST:event_mnCadastroReceitaActionPerformed
+
+    private void mnConsultaReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConsultaReceitaActionPerformed
+        TelaConsultaReceita tlConsultaReceita = new TelaConsultaReceita();
+
+        dispose();
+        tlConsultaReceita.setVisible(true);
+    }//GEN-LAST:event_mnConsultaReceitaActionPerformed
+
+    private void mnCadastroDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadastroDespesaActionPerformed
+        TelaCadastroDespesa tlCadastroDespesa = new TelaCadastroDespesa();
+
+        dispose();
+        tlCadastroDespesa.setVisible(true);
+    }//GEN-LAST:event_mnCadastroDespesaActionPerformed
+
+    private void mnConsultaDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConsultaDespesaActionPerformed
+        TelaConsultaDespesa tlConsultaDespesa = new TelaConsultaDespesa();
+
+        dispose();
+        tlConsultaDespesa.setVisible(true);
+    }//GEN-LAST:event_mnConsultaDespesaActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        TelaConsultaLancamento tlConsultaLancamento = new TelaConsultaLancamento();
+
+        dispose();
+        tlConsultaLancamento.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void mnbtnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnbtnSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_mnbtnSairActionPerformed
+
+    private void mnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSairActionPerformed
+
+    }//GEN-LAST:event_mnSairActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -312,7 +330,9 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastrarReceita;
     private javax.swing.JButton btnLimparReceita;
     private javax.swing.JTextField dataReceita;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel lblDataReceita;
     private javax.swing.JLabel lblTipoReceita;
     private javax.swing.JLabel lblTitleReceita;

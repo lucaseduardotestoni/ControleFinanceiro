@@ -1,21 +1,19 @@
 package view;
 
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.Conta;
+import model.Despesa;
 import model.Receita;
 
 public class TelaConsultaReceita extends javax.swing.JFrame {
 
     public TelaConsultaReceita() {
         initComponents();
-        Conta conta = new Conta();
-        List<Receita> receitas = conta.listarReceitas();
-        StringBuffer text = new StringBuffer("");
-        for (Receita receita : receitas) {
-            text.append("Data: ").append(receita.getData()).append(" Valor: ").append(receita.getValor()).append("\n");
-        }
-
-        consultaReceitas.setText(text.toString());
     }
 
     @SuppressWarnings("unchecked")
@@ -23,8 +21,10 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
     private void initComponents() {
 
         lblTitleReceita = new javax.swing.JLabel();
+        btnSelectListDataAtual = new javax.swing.JRadioButton();
+        btnSelectListTodas = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        consultaReceitas = new javax.swing.JTextArea();
+        tblReceita = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnReceita = new javax.swing.JMenu();
         mnCadastroReceita = new javax.swing.JMenuItem();
@@ -32,18 +32,52 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
         mnDespesa = new javax.swing.JMenu();
         mnCadastroDespesa = new javax.swing.JMenuItem();
         mnConsultaDespesa = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         mnSair = new javax.swing.JMenu();
         mnbtnSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         lblTitleReceita.setFont(new java.awt.Font("GalanoGrotesqueDEMO-Bold", 0, 24)); // NOI18N
         lblTitleReceita.setForeground(new java.awt.Color(0, 153, 0));
         lblTitleReceita.setText("Consulta de Receita");
 
-        consultaReceitas.setColumns(20);
-        consultaReceitas.setRows(5);
-        jScrollPane1.setViewportView(consultaReceitas);
+        btnSelectListDataAtual.setText("Listar por data atual");
+        btnSelectListDataAtual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelectListDataAtualActionPerformed(evt);
+            }
+        });
+
+        btnSelectListTodas.setText("Listar Todas");
+        btnSelectListTodas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelectListTodasActionPerformed(evt);
+            }
+        });
+
+        tblReceita.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Tipo de Receita", "Valor", "Data "
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblReceita);
 
         mnReceita.setText("Receita");
 
@@ -86,6 +120,18 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
 
         jMenuBar1.add(mnDespesa);
 
+        jMenu1.setText("Lançamentos");
+
+        jMenuItem1.setText("Consulta");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
         mnSair.setText("Sair");
         mnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,32 +156,92 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(lblTitleReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addGap(156, 156, 156)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSelectListDataAtual)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(btnSelectListTodas)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblTitleReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lblTitleReceita)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addComponent(btnSelectListDataAtual)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSelectListTodas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSelectListDataAtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectListDataAtualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSelectListDataAtualActionPerformed
+
+    private void btnSelectListTodasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectListTodasActionPerformed
+        btnSelectListDataAtual.setSelected(false);
+        DefaultTableModel model = (DefaultTableModel) tblReceita.getModel();
+        model.setNumRows(0);
+
+        Conta conta = new Conta();
+        List<Receita> listarReceitas = conta.listarReceitas();
+
+        SimpleDateFormat formatar = new SimpleDateFormat("MM/dd/yyyy");
+        DecimalFormat df = new DecimalFormat();
+        df.applyPattern("R$ #,##0.00");
+        String categoria = "";
+        if (!listarReceitas.isEmpty()) {
+            for (Receita listarReceita : listarReceitas) {
+                String[] dadosReceita = listarReceita.toString().split(";");
+                switch (dadosReceita[0]) {
+                    case "SALARIO": {
+                        categoria = "Salário";
+                        break;
+                    }
+                    case "DECIMO_TERCEIRO": {
+                        categoria = "Transporte";
+                        break;
+                    }
+                    case "FERIAS": {
+                        categoria = "Ferias";
+                        break;
+                    }
+                    case "OUTRAS": {
+                        categoria = "Outras";
+                        break;
+                    }
+                }
+                model.addRow(new Object[]{
+                    //retorna os dados da tabela do BD, cada campo e um coluna.
+                    categoria, df.format(Double.parseDouble((dadosReceita[1]))), formatar.format(new Date(dadosReceita[2]))});
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Receita inexistente - Verifique.");
+            model.setNumRows(0);
+        }
+    }//GEN-LAST:event_btnSelectListTodasActionPerformed
 
     private void mnCadastroReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadastroReceitaActionPerformed
         TelaCadastroReceita tlCadastroReceita = new TelaCadastroReceita();
 
         dispose();
         tlCadastroReceita.setVisible(true);
-
     }//GEN-LAST:event_mnCadastroReceitaActionPerformed
 
     private void mnConsultaReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConsultaReceitaActionPerformed
@@ -159,6 +265,13 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
         tlConsultaDespesa.setVisible(true);
     }//GEN-LAST:event_mnConsultaDespesaActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        TelaConsultaLancamento tlConsultaLancamento = new TelaConsultaLancamento();
+
+        dispose();
+        tlConsultaLancamento.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     private void mnbtnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnbtnSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_mnbtnSairActionPerformed
@@ -176,8 +289,11 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea consultaReceitas;
+    private javax.swing.JRadioButton btnSelectListDataAtual;
+    private javax.swing.JRadioButton btnSelectListTodas;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitleReceita;
     private javax.swing.JMenuItem mnCadastroDespesa;
@@ -188,5 +304,6 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
     private javax.swing.JMenu mnReceita;
     private javax.swing.JMenu mnSair;
     private javax.swing.JMenuItem mnbtnSair;
+    private javax.swing.JTable tblReceita;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,11 +1,10 @@
 package view;
 
 public class TelaPrincipal extends javax.swing.JFrame {
-    
+
     public TelaPrincipal() {
         initComponents();
     }
-     
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -18,10 +17,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mnDespesa = new javax.swing.JMenu();
         mnCadastroDespesa = new javax.swing.JMenuItem();
         mnConsultaDespesa = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         mnSair = new javax.swing.JMenu();
         mnbtnSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         mnReceita.setText("Receita");
 
@@ -63,6 +65,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(mnDespesa);
 
+        jMenu1.setText("Lançamentos");
+
+        jMenuItem1.setText("Consulta");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
         mnSair.setText("Sair");
         mnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,7 +104,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGap(0, 279, Short.MAX_VALUE)
         );
 
         pack();
@@ -105,18 +119,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnbtnSairActionPerformed
 
     private void mnConsultaReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConsultaReceitaActionPerformed
-      TelaConsultaReceita tlConsultaReceita = new TelaConsultaReceita();
-      
-      dispose();
-      tlConsultaReceita.setVisible(true);
+        TelaConsultaReceita tlConsultaReceita = new TelaConsultaReceita();
+
+        dispose();
+        tlConsultaReceita.setVisible(true);
     }//GEN-LAST:event_mnConsultaReceitaActionPerformed
 
     private void mnCadastroReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadastroReceitaActionPerformed
-    TelaCadastroReceita tlCadastroReceita = new TelaCadastroReceita();
-    
-     dispose();
-     tlCadastroReceita.setVisible(true);
-     
+        TelaCadastroReceita tlCadastroReceita = new TelaCadastroReceita();
+
+        dispose();
+        tlCadastroReceita.setVisible(true);
+
     }//GEN-LAST:event_mnCadastroReceitaActionPerformed
 
     private void mnCadastroDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadastroDespesaActionPerformed
@@ -127,11 +141,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnCadastroDespesaActionPerformed
 
     private void mnConsultaDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnConsultaDespesaActionPerformed
-     TelaConsultaDespesa tlConsultaDespesa = new TelaConsultaDespesa();
+        TelaConsultaDespesa tlConsultaDespesa = new TelaConsultaDespesa();
 
-     dispose();
-     tlConsultaDespesa.setVisible(true);
+        dispose();
+        tlConsultaDespesa.setVisible(true);
     }//GEN-LAST:event_mnConsultaDespesaActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        TelaConsultaLancamento tlConsultaLancamento = new TelaConsultaLancamento();
+
+        dispose();
+        tlConsultaLancamento.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -142,7 +163,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem mnCadastroDespesa;
     private javax.swing.JMenuItem mnCadastroReceita;
     private javax.swing.JMenuItem mnConsultaDespesa;

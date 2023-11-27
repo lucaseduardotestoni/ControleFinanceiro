@@ -16,6 +16,7 @@ public class Receita extends Lancamento {
 
     public Receita(CategoriaReceita categoria, double valor, Date dataDespesa) {
         super(valor, dataDespesa);
+        this.categoria = categoria;
     }
 
     public CategoriaReceita getCategoria() {
@@ -35,10 +36,9 @@ public class Receita extends Lancamento {
         sb.append(categoria).append(";");
 
         sb.append(valor).append(";");
-
+        
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         sb.append(sdf.format(data));
-
         return sb.toString();
     }
 }

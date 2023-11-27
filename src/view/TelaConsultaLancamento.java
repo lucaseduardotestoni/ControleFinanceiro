@@ -8,23 +8,24 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Conta;
 import model.Despesa;
+import model.Lancamento;
+import model.Receita;
 
-public class TelaConsultaDespesa extends javax.swing.JFrame {
+public class TelaConsultaLancamento extends javax.swing.JFrame {
 
-    public TelaConsultaDespesa() {
+    public TelaConsultaLancamento() {
         initComponents();
-
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTitleDespesa = new javax.swing.JLabel();
-        btnSelectListDataAtual = new javax.swing.JRadioButton();
-        btnSelectListTodas = new javax.swing.JRadioButton();
+        lblTitleReceita = new javax.swing.JLabel();
+        btnSelectListLancamento = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDespesa = new javax.swing.JTable();
+        tblLancamento = new javax.swing.JTable();
+        txtSaldoAtual = new java.awt.Label();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnReceita = new javax.swing.JMenu();
         mnCadastroReceita = new javax.swing.JMenuItem();
@@ -38,26 +39,21 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
         mnbtnSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(2147, 2147483647));
+        setResizable(false);
 
-        lblTitleDespesa.setFont(new java.awt.Font("GalanoGrotesqueDEMO-Bold", 0, 24)); // NOI18N
-        lblTitleDespesa.setForeground(new java.awt.Color(204, 0, 0));
-        lblTitleDespesa.setText("Consulta de Despesa");
+        lblTitleReceita.setFont(new java.awt.Font("GalanoGrotesqueDEMO-Bold", 0, 24)); // NOI18N
+        lblTitleReceita.setForeground(new java.awt.Color(0, 153, 0));
+        lblTitleReceita.setText("Consulta Lancamentos");
 
-        btnSelectListDataAtual.setText("Listar por data atual");
-        btnSelectListDataAtual.addActionListener(new java.awt.event.ActionListener() {
+        btnSelectListLancamento.setText("Listar todos os Lançamentos");
+        btnSelectListLancamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelectListDataAtualActionPerformed(evt);
+                btnSelectListLancamentoActionPerformed(evt);
             }
         });
 
-        btnSelectListTodas.setText("Listar Todas");
-        btnSelectListTodas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelectListTodasActionPerformed(evt);
-            }
-        });
-
-        tblDespesa.setModel(new javax.swing.table.DefaultTableModel(
+        tblLancamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -65,18 +61,20 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Tipo de Receita", "Valor", "Data "
+                "Categoria", "Valor", "Data "
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblDespesa);
+        jScrollPane1.setViewportView(tblLancamento);
+
+        txtSaldoAtual.setFont(new java.awt.Font("GalanoGrotesque-Medium", 0, 14)); // NOI18N
 
         mnReceita.setText("Receita");
 
@@ -109,7 +107,6 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
         mnDespesa.add(mnCadastroDespesa);
 
         mnConsultaDespesa.setText("Consulta");
-        mnConsultaDespesa.setEnabled(false);
         mnConsultaDespesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnConsultaDespesaActionPerformed(evt);
@@ -122,6 +119,7 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
         jMenu1.setText("Lançamentos");
 
         jMenuItem1.setText("Consulta");
+        jMenuItem1.setEnabled(false);
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -155,59 +153,55 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(lblTitleDespesa)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSelectListDataAtual)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(btnSelectListTodas)))
-                        .addGap(142, 142, 142))))
+                .addGap(68, 68, 68)
+                .addComponent(lblTitleReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtSaldoAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(117, 117, 117)
+                            .addComponent(btnSelectListLancamento))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(14, 14, 14)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTitleDespesa)
+                .addComponent(lblTitleReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSelectListDataAtual)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSelectListTodas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSelectListLancamento)
+                .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGap(1, 1, 1)
+                .addComponent(txtSaldoAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSelectListDataAtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectListDataAtualActionPerformed
-        btnSelectListTodas.setSelected(false);
-    }//GEN-LAST:event_btnSelectListDataAtualActionPerformed
-
-    private void btnSelectListTodasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectListTodasActionPerformed
-        btnSelectListDataAtual.setSelected(false);
-        DefaultTableModel model = (DefaultTableModel) tblDespesa.getModel();
+    private void btnSelectListLancamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectListLancamentoActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tblLancamento.getModel();
         model.setNumRows(0);
 
         Conta conta = new Conta();
-        List<Despesa> listarDespesas = conta.listarDespesas();
+        List<Lancamento> listarLancamentos = conta.listarLancamentos();
+
         SimpleDateFormat formatar = new SimpleDateFormat("MM/dd/yyyy");
         DecimalFormat df = new DecimalFormat();
         df.applyPattern("R$ #,##0.00");
+
         String categoria = "";
-        if (!listarDespesas.isEmpty()) {
-            
-            for (Despesa listarDespesa : listarDespesas) {
-                String[] dadosDespesa = listarDespesa.toString().split(";");
+        if (!listarLancamentos.isEmpty()) {
+            txtSaldoAtual.setText("O saldo Atual é "+df.format(conta.consultarSaldoAtual()));
+            for (Lancamento listarLancamento : listarLancamentos) {
+                String[] dadosDespesa = listarLancamento.toString().split(";");
+               
                 switch (dadosDespesa[0]) {
                     case "ALIMENTACAO": {
                         categoria = "Alimentação";
@@ -237,17 +231,28 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
                         categoria = "Outras";
                         break;
                     }
+                    case "SALARIO": {
+                        categoria = "Salário";
+                        break;
+                    }
+                    case "DECIMO_TERCEIRO": {
+                        categoria = "Transporte";
+                        break;
+                    }
+                    case "FERIAS": {
+                        categoria = "Ferias";
+                        break;
+                    }
                 }
                 model.addRow(new Object[]{
                     //retorna os dados da tabela do BD, cada campo e um coluna.
-                    categoria, df.format(Double.parseDouble((dadosDespesa[1]))), formatar.format(new Date(dadosDespesa[2]))});
+                    categoria, df.format(Double.parseDouble((dadosDespesa[1]))),formatar.format(new Date(dadosDespesa[2]))});
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Despesa inexistente - Verifique.");
+            JOptionPane.showMessageDialog(null, "Lançamento inexistente - Verifique.");
             model.setNumRows(0);
         }
-
-    }//GEN-LAST:event_btnSelectListTodasActionPerformed
+    }//GEN-LAST:event_btnSelectListLancamentoActionPerformed
 
     private void mnCadastroReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadastroReceitaActionPerformed
         TelaCadastroReceita tlCadastroReceita = new TelaCadastroReceita();
@@ -295,19 +300,18 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaConsultaDespesa().setVisible(true);
+                new TelaConsultaLancamento().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton btnSelectListDataAtual;
-    private javax.swing.JRadioButton btnSelectListTodas;
+    private javax.swing.JRadioButton btnSelectListLancamento;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblTitleDespesa;
+    private javax.swing.JLabel lblTitleReceita;
     private javax.swing.JMenuItem mnCadastroDespesa;
     private javax.swing.JMenuItem mnCadastroReceita;
     private javax.swing.JMenuItem mnConsultaDespesa;
@@ -316,6 +320,7 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
     private javax.swing.JMenu mnReceita;
     private javax.swing.JMenu mnSair;
     private javax.swing.JMenuItem mnbtnSair;
-    private javax.swing.JTable tblDespesa;
+    private javax.swing.JTable tblLancamento;
+    private java.awt.Label txtSaldoAtual;
     // End of variables declaration//GEN-END:variables
 }

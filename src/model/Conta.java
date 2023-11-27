@@ -39,7 +39,7 @@ public class Conta {
      * lista as despesas atráves de uma list da classe Despesa
      */
     public List<Despesa> listarDespesas() {
-        return despesas;
+        return despesas ;
     }
     /**
      *  Irá percorrer todos os lancamentos de despesas e receitas
@@ -58,6 +58,7 @@ public class Conta {
      * em seguida irá capturar o valor deles armazenar e subtrarir com saldo atual da receita
      * saldo atual da despesa
      * */
+    
     public double consultarSaldoAtual() {
         double saldoAtual = 0;
 
@@ -107,5 +108,6 @@ public class Conta {
     public void cadastrarReceita(Receita receita) {
         importador.cadastrarReceita(receita.toString());
     }
+    
 
 }

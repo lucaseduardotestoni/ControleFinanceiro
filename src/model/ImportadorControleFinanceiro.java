@@ -44,9 +44,9 @@ public class ImportadorControleFinanceiro {
                 String linha = sc.nextLine();
 
                 String[] dados = linha.split(";");
-
+                
                 Despesa despesa = new Despesa(CategoriaDespesa.valueOf(dados[0]), Double.parseDouble(dados[1]), (new Date(dados[2])));
-
+           
                 despesas.add(despesa);
             }
         } catch (FileNotFoundException e) {

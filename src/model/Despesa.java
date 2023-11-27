@@ -11,7 +11,6 @@ public class Despesa extends Lancamento {
     private CategoriaDespesa categoria;
 
     public Despesa() {
-
     }
     public Despesa(CategoriaDespesa categoria, double valor, Date data) {
         super(valor, data);
@@ -36,10 +35,10 @@ public class Despesa extends Lancamento {
         sb.append(categoria).append(";");
 
         sb.append(valor).append(";");
-        System.out.println(data);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         sb.append(sdf.format(data));
 
         return sb.toString();
     }
+    
 }

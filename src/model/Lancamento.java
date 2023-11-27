@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Classe pai que irá ter as caracteristicas de lancamentos
