@@ -108,7 +108,4 @@ public class Conta {
         importador.cadastrarReceita(receita.toString());
     }
 
-    void adicionarReceita(Receita receita) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
