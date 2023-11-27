@@ -5,6 +5,10 @@
  */
 package view;
 
+import java.util.List;
+import model.Conta;
+import model.Dao.ReceitaDao;
+
 /**
  *
  * @author Lucas.Testoni
@@ -16,6 +20,14 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
      */
     public TelaConsultaReceita() {
         initComponents();
+        
+        Conta conta = new Conta();
+        List<ReceitaDao> receitas = conta.listarReceitas();
+        StringBuffer text = new StringBuffer("");
+        for(ReceitaDao despesa : receitas){
+            text.append("Data: ").append(despesa.getData()).append(" Valor: ").append(despesa.getValor()).append("\n");
+        }
+        consultaReceitas.setText(text.toString());
     }
 
     /**
@@ -27,6 +39,8 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        consultaReceitas = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnReceita = new javax.swing.JMenu();
         mnCadastroReceita = new javax.swing.JMenuItem();
@@ -38,6 +52,8 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
         mnbtnSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Receitas");
 
         mnReceita.setText("Receita");
 
@@ -103,11 +119,22 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 396, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(161, 161, 161)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(104, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(consultaReceitas)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(consultaReceitas, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -185,6 +212,8 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField consultaReceitas;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem mnCadastroDespesa;
     private javax.swing.JMenuItem mnCadastroReceita;

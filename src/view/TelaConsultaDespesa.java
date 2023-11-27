@@ -5,6 +5,10 @@
  */
 package view;
 
+import java.util.List;
+import model.Conta;
+import model.Dao.DespesaDao;
+
 /**
  *
  * @author Lucas.Testoni
@@ -16,6 +20,14 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
      */
     public TelaConsultaDespesa() {
         initComponents();
+        Conta conta = new Conta();
+        List<DespesaDao> despesas = conta.listarDespesas();
+        StringBuffer text = new StringBuffer("");
+        for(DespesaDao despesa : despesas){
+            text.append("Data: ").append(despesa.getData()).append(" Valor: ").append(despesa.getValor()).append("\n");
+        }
+        
+        consultaDespesas.setText(text.toString());
     }
 
     /**
@@ -27,7 +39,9 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        consultaDespesas = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnReceita = new javax.swing.JMenu();
         mnCadastroReceita = new javax.swing.JMenuItem();
@@ -40,7 +54,11 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Despesa");
+        consultaDespesas.setColumns(20);
+        consultaDespesas.setRows(5);
+        jScrollPane1.setViewportView(consultaDespesas);
+
+        jLabel2.setText("Despesas");
 
         mnReceita.setText("Receita");
 
@@ -107,16 +125,22 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(144, 144, 144)
-                .addComponent(jLabel1)
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(166, 166, 166)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(149, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jLabel1)
-                .addContainerGap(186, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(7, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -194,8 +218,10 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextArea consultaDespesas;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem mnCadastroDespesa;
     private javax.swing.JMenuItem mnCadastroReceita;
     private javax.swing.JMenuItem mnConsultaDespesa;

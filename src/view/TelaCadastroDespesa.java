@@ -9,12 +9,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
-<<<<<<< HEAD
-import model.CategoriaDespesa;
-=======
 import model.Enums.CategoriaDespesa;
 import model.Enums.CategoriaReceita;
->>>>>>> 87582962e6b9045e116da2e1912a5f48402345b2
 import model.Conta;
 import model.Despesa;
 
@@ -27,10 +23,6 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
     Conta conta = new Conta();
     public TelaCadastroDespesa() {
         initComponents();
-<<<<<<< HEAD
-=======
-        
->>>>>>> 87582962e6b9045e116da2e1912a5f48402345b2
         for(CategoriaDespesa categoria : CategoriaDespesa.values()){
             tipoDespesa.addItem(categoria.name());
         }
