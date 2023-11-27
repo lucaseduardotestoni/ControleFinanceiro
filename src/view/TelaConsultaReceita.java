@@ -21,7 +21,6 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
     private void initComponents() {
 
         lblTitleReceita = new javax.swing.JLabel();
-        btnSelectListDataAtual = new javax.swing.JRadioButton();
         btnSelectListTodas = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReceita = new javax.swing.JTable();
@@ -43,13 +42,6 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
         lblTitleReceita.setFont(new java.awt.Font("GalanoGrotesqueDEMO-Bold", 0, 24)); // NOI18N
         lblTitleReceita.setForeground(new java.awt.Color(0, 153, 0));
         lblTitleReceita.setText("Consulta de Receita");
-
-        btnSelectListDataAtual.setText("Listar por data atual");
-        btnSelectListDataAtual.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelectListDataAtualActionPerformed(evt);
-            }
-        });
 
         btnSelectListTodas.setText("Listar Todas");
         btnSelectListTodas.addActionListener(new java.awt.event.ActionListener() {
@@ -156,22 +148,18 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSelectListDataAtual)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(btnSelectListTodas)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 29, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblTitleReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36))))
+                        .addComponent(btnSelectListTodas)
+                        .addGap(172, 172, 172))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,23 +167,16 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblTitleReceita)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSelectListDataAtual)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSelectListTodas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSelectListDataAtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectListDataAtualActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSelectListDataAtualActionPerformed
-
     private void btnSelectListTodasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectListTodasActionPerformed
-        btnSelectListDataAtual.setSelected(false);
         DefaultTableModel model = (DefaultTableModel) tblReceita.getModel();
         model.setNumRows(0);
 
@@ -289,7 +270,6 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton btnSelectListDataAtual;
     private javax.swing.JRadioButton btnSelectListTodas;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;

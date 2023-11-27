@@ -21,7 +21,6 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
     private void initComponents() {
 
         lblTitleDespesa = new javax.swing.JLabel();
-        btnSelectListDataAtual = new javax.swing.JRadioButton();
         btnSelectListTodas = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDespesa = new javax.swing.JTable();
@@ -43,14 +42,7 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
         lblTitleDespesa.setForeground(new java.awt.Color(204, 0, 0));
         lblTitleDespesa.setText("Consulta de Despesa");
 
-        btnSelectListDataAtual.setText("Listar por data atual");
-        btnSelectListDataAtual.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelectListDataAtualActionPerformed(evt);
-            }
-        });
-
-        btnSelectListTodas.setText("Listar Todas");
+        btnSelectListTodas.setText("Listar Despesas");
         btnSelectListTodas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelectListTodasActionPerformed(evt);
@@ -155,46 +147,34 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(lblTitleDespesa)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSelectListDataAtual)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(btnSelectListTodas)))
-                        .addGap(142, 142, 142))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(lblTitleDespesa))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(btnSelectListTodas))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitleDespesa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSelectListDataAtual)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSelectListTodas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSelectListDataAtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectListDataAtualActionPerformed
-        btnSelectListTodas.setSelected(false);
-    }//GEN-LAST:event_btnSelectListDataAtualActionPerformed
-
     private void btnSelectListTodasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectListTodasActionPerformed
-        btnSelectListDataAtual.setSelected(false);
         DefaultTableModel model = (DefaultTableModel) tblDespesa.getModel();
         model.setNumRows(0);
 
@@ -301,7 +281,6 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton btnSelectListDataAtual;
     private javax.swing.JRadioButton btnSelectListTodas;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
