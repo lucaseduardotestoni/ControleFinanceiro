@@ -1,7 +1,9 @@
 package view;
 
+import java.awt.Color;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import model.Enums.CategoriaDespesa;
@@ -10,10 +12,14 @@ import model.Despesa;
 
 public class TelaCadastroDespesa extends javax.swing.JFrame {
 
+    private LocalDate dataAtual = LocalDate.now();
+
     Conta conta = new Conta();
+
     public TelaCadastroDespesa() {
+
         initComponents();
-        for(CategoriaDespesa categoria : CategoriaDespesa.values()){
+        for (CategoriaDespesa categoria : CategoriaDespesa.values()) {
             tipoDespesa.addItem(categoria.name());
         }
     }
@@ -226,15 +232,15 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparDespesaActionPerformed
 
     private void btnCadastrarDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarDespesaActionPerformed
-        
+
     }//GEN-LAST:event_btnCadastrarDespesaActionPerformed
 
     private void btnCadastrarDespesaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarDespesaMouseClicked
         Despesa despesa = new Despesa();
-        
-        if(tipoDespesa.getSelectedItem() == null || dataDespesa.getText().trim().equals("") || valorDespesa.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this.rootPane,"Preencha todos os campos");
-        }else{
+
+        if (tipoDespesa.getSelectedItem() == null || dataDespesa.getText().trim().equals("") || valorDespesa.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(this.rootPane, "Preencha todos os campos");
+        } else {
             despesa.setCategoria(CategoriaDespesa.valueOf(tipoDespesa.getSelectedItem().toString().toUpperCase()));
             despesa.setValor(Double.parseDouble(valorDespesa.getText()));
             String dataTexto = dataDespesa.getText();
@@ -244,13 +250,13 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
                 despesa.setData(data);
             } catch (ParseException e) {
                 e.printStackTrace();
-            }            
-            JOptionPane.showMessageDialog(this.rootPane,"Despesa cadastrada com sucesso!");
+            }
+            JOptionPane.showMessageDialog(this.rootPane, "Despesa cadastrada com sucesso!");
             dataDespesa.setText("");
             valorDespesa.setText("");
         }
         conta.cadastrarDespesa(despesa);
-        
+
     }//GEN-LAST:event_btnCadastrarDespesaMouseClicked
 
     private void tipoDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoDespesaActionPerformed
@@ -304,7 +310,7 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -325,6 +331,7 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaCadastroDespesa().setVisible(true);
+
             }
         });
     }

@@ -43,7 +43,7 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
         lblTitleReceita.setForeground(new java.awt.Color(0, 153, 0));
         lblTitleReceita.setText("Consulta de Receita");
 
-        btnSelectListTodas.setText("Listar Todas");
+        btnSelectListTodas.setText("Listar Receitas");
         btnSelectListTodas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelectListTodasActionPerformed(evt);
@@ -52,10 +52,7 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
 
         tblReceita.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Tipo de Receita", "Valor", "Data "

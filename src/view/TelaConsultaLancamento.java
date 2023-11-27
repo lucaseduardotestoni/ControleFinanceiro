@@ -26,6 +26,8 @@ public class TelaConsultaLancamento extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLancamento = new javax.swing.JTable();
         txtSaldoAtual = new java.awt.Label();
+        btnSaldoAtual = new javax.swing.JButton();
+        btnSaldoTotal = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnReceita = new javax.swing.JMenu();
         mnCadastroReceita = new javax.swing.JMenuItem();
@@ -46,6 +48,7 @@ public class TelaConsultaLancamento extends javax.swing.JFrame {
         lblTitleReceita.setForeground(new java.awt.Color(0, 153, 0));
         lblTitleReceita.setText("Consulta Lancamentos");
 
+        btnSelectListLancamento.setFont(new java.awt.Font("GalanoGrotesque-Light", 0, 12)); // NOI18N
         btnSelectListLancamento.setText("Listar todos os Lançamentos");
         btnSelectListLancamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,18 +58,22 @@ public class TelaConsultaLancamento extends javax.swing.JFrame {
 
         tblLancamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Categoria", "Valor", "Data "
+                "Tipo de Lançamento", "Valor", "Data"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.Object.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -75,6 +82,22 @@ public class TelaConsultaLancamento extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblLancamento);
 
         txtSaldoAtual.setFont(new java.awt.Font("GalanoGrotesque-Medium", 0, 14)); // NOI18N
+
+        btnSaldoAtual.setFont(new java.awt.Font("GalanoGrotesque-Light", 0, 12)); // NOI18N
+        btnSaldoAtual.setText("Saldo Atual");
+        btnSaldoAtual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaldoAtualActionPerformed(evt);
+            }
+        });
+
+        btnSaldoTotal.setFont(new java.awt.Font("GalanoGrotesque-Light", 0, 12)); // NOI18N
+        btnSaldoTotal.setText("Saldo Total");
+        btnSaldoTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaldoTotalActionPerformed(evt);
+            }
+        });
 
         mnReceita.setText("Receita");
 
@@ -153,33 +176,45 @@ public class TelaConsultaLancamento extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(lblTitleReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(lblTitleReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(btnSelectListLancamento)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtSaldoAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(117, 117, 117)
-                            .addComponent(btnSelectListLancamento))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(14, 14, 14)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSaldoAtual, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSaldoAtual)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSaldoTotal)
+                                .addGap(112, 112, 112)))
+                        .addGap(0, 2, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitleReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSelectListLancamento)
-                .addGap(29, 29, 29)
+                .addGap(23, 23, 23)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(txtSaldoAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSaldoTotal)
+                    .addComponent(btnSaldoAtual))
+                .addGap(0, 17, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,10 +233,9 @@ public class TelaConsultaLancamento extends javax.swing.JFrame {
 
         String categoria = "";
         if (!listarLancamentos.isEmpty()) {
-            txtSaldoAtual.setText("O saldo Atual é "+df.format(conta.consultarSaldoAtual()));
             for (Lancamento listarLancamento : listarLancamentos) {
                 String[] dadosDespesa = listarLancamento.toString().split(";");
-               
+
                 switch (dadosDespesa[0]) {
                     case "ALIMENTACAO": {
                         categoria = "Alimentação";
@@ -246,7 +280,7 @@ public class TelaConsultaLancamento extends javax.swing.JFrame {
                 }
                 model.addRow(new Object[]{
                     //retorna os dados da tabela do BD, cada campo e um coluna.
-                    categoria, df.format(Double.parseDouble((dadosDespesa[1]))),formatar.format(new Date(dadosDespesa[2]))});
+                    categoria, df.format(Double.parseDouble((dadosDespesa[1]))), formatar.format(new Date(dadosDespesa[2]))});
             }
         } else {
             JOptionPane.showMessageDialog(null, "Lançamento inexistente - Verifique.");
@@ -297,6 +331,21 @@ public class TelaConsultaLancamento extends javax.swing.JFrame {
 
     }//GEN-LAST:event_mnSairActionPerformed
 
+    private void btnSaldoAtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoAtualActionPerformed
+        Conta conta = new Conta();
+        double saldo = conta.consultarSaldoAtual();
+        DecimalFormat df = new DecimalFormat("R$ 0.00");
+        txtSaldoAtual.setText("O saldo Atual é de " + df.format(saldo));
+
+    }//GEN-LAST:event_btnSaldoAtualActionPerformed
+
+    private void btnSaldoTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoTotalActionPerformed
+        Conta conta = new Conta();
+        double saldo = conta.consultarSaldoTotal();
+        DecimalFormat df = new DecimalFormat("R$ 0.00");
+        txtSaldoAtual.setText("O saldo Total é de " + df.format(saldo));
+    }//GEN-LAST:event_btnSaldoTotalActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -306,6 +355,8 @@ public class TelaConsultaLancamento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSaldoAtual;
+    private javax.swing.JButton btnSaldoTotal;
     private javax.swing.JRadioButton btnSelectListLancamento;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;

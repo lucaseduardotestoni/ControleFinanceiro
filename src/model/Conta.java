@@ -63,7 +63,6 @@ public class Conta {
         double saldoAtual = 0;
 
         Date dataAtual = new Date();
-
         
         for (Receita receita : receitas) {
             if (receita.getData().before(dataAtual) || receita.getData().equals(dataAtual)) {

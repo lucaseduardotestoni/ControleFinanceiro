@@ -51,10 +51,7 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
 
         tblDespesa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Tipo de Receita", "Valor", "Data "
