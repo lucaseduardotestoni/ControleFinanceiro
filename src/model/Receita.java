@@ -3,7 +3,9 @@ package model;
 import java.text.SimpleDateFormat;
 import model.Enums.CategoriaReceita;
 import java.util.Date;
-
+/**
+ * Extensao da Classe laçamento que contem todas informações
+ * da Receita*/
 public class Receita extends Lancamento {
 
     private CategoriaReceita categoria;
@@ -23,7 +25,10 @@ public class Receita extends Lancamento {
     public void setCategoria(CategoriaReceita categoria) {
         this.categoria = categoria;
     }
-
+    /**
+     * Metodo toString de Cadastro de Receita, chama String Builder
+     * preparando os dados capturados do usuário para gravar.
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

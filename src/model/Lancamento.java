@@ -2,6 +2,9 @@ package model;
 
 import java.util.Date;
 
+/**
+ * Classe pai que irá ter as caracteristicas de lancamentos
+ * */
 public abstract class Lancamento implements Comparable<Lancamento> {
 
     protected Date data;
