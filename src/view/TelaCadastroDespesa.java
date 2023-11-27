@@ -10,7 +10,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import model.CategoriaDespesa;
-import model.CategoriaReceita;
 import model.Conta;
 import model.Despesa;
 
@@ -23,7 +22,7 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
     Conta conta = new Conta();
     public TelaCadastroDespesa() {
         initComponents();
-         for(CategoriaDespesa categoria : CategoriaDespesa.values()){
+        for(CategoriaDespesa categoria : CategoriaDespesa.values()){
             tipoDespesa.addItem(categoria.name());
         }
     }
@@ -268,7 +267,7 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
         if(tipoDespesa.getSelectedItem() == null || dataDespesa.getText().trim().equals("") || valorDespesa.getText().trim().equals("")){
             JOptionPane.showMessageDialog(this.rootPane,"Preencha todos os campos");
         }else{
-            despesa.setCategoria(CategoriaDespesa.valueOf(tipoDespesa.getSelectedItem().toString()));
+            despesa.setCategoria(CategoriaDespesa.valueOf(tipoDespesa.getSelectedItem().toString().toUpperCase()));;
             despesa.setValor(Double.parseDouble(valorDespesa.getText()));
             String dataTexto = dataDespesa.getText();
             SimpleDateFormat formatoData = new SimpleDateFormat("MM/dd/yyyy");

@@ -2,10 +2,7 @@ package view;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.CategoriaReceita;
 import model.Conta;
@@ -295,7 +292,7 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
         if(tipoReceita.getSelectedItem() == null || dataReceita.getText().trim().equals("") || valorReceita.getText().trim().equals("")){
             JOptionPane.showMessageDialog(this.rootPane,"Preencha todos os campos");
         }else{
-            receita.setCategoria(CategoriaReceita.valueOf(tipoReceita.getSelectedItem().toString()));
+            receita.setCategoria(CategoriaReceita.valueOf((String)tipoReceita.getSelectedItem()));
             receita.setValor(Double.parseDouble(valorReceita.getText()));
             String dataTexto = dataReceita.getText();
             SimpleDateFormat formatoData = new SimpleDateFormat("MM/dd/yyyy");
