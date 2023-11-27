@@ -260,7 +260,7 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
             } catch (ParseException e) {
                 e.printStackTrace();
             }            
-            JOptionPane.showMessageDialog(this.rootPane,"Despesa cadastrada com sucesso!");
+            JOptionPane.showMessageDialog(this.rootPane,"Receita cadastrada com sucesso!");
             dataReceita.setText("");
             valorReceita.setText("");
         }

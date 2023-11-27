@@ -47,7 +47,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         mnDespesa.setText("Despesa");
 
-        mnCadastroDespesa.setText("Casdastro");
+        mnCadastroDespesa.setText("Cadastro");
         mnCadastroDespesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnCadastroDespesaActionPerformed(evt);

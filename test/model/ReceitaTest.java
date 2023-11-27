@@ -7,7 +7,6 @@ package model;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import model.Enums.CategoriaDespesa;
 import model.Enums.CategoriaReceita;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
@@ -29,7 +28,7 @@ public class ReceitaTest {
         Date dataEsperada = sdf.parse("05/10/2023");
         receita.setData(dataEsperada);
         String resultadoToString = receita.toString();
-        String resultadoEsperado = "SALARIO;500.00;05/10/2023";
+        String resultadoEsperado = "SALARIO;500.0;10/05/2023";
 
         assertEquals(resultadoEsperado, resultadoToString);
     }

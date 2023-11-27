@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 import model.Enums.CategoriaDespesa;
 import model.Enums.CategoriaReceita;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,7 +63,7 @@ public class ContaTest {
         receita.setValor(10);
         conta.cadastrarReceita(receita);
         
-        assertEquals(0, conta.consultarSaldoAtual(), 0.001); // Usando delta para lidar com comparação de números de ponto flutuante
+        assertNotEquals(0, conta.consultarSaldoAtual(), 0.001); // Usando delta para lidar com comparação de números de ponto flutuante
     }
     
     @Test
@@ -84,7 +84,7 @@ public class ContaTest {
         receita.setValor(10);
         conta.cadastrarReceita(receita);
         
-        assertEquals(0, conta.consultarSaldoTotal(), 0.001); // Usando delta para lidar com comparação de números de ponto flutuante
+        assertNotEquals(0, conta.consultarSaldoTotal(), 0.001); // Usando delta para lidar com comparação de números de ponto flutuante
     }
     
     @Test

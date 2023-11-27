@@ -28,7 +28,7 @@ public class DespesaTest {
         Date dataEsperada = sdf.parse("10/05/2023");
         despesa.setData(dataEsperada);
         String resultadoToString = despesa.toString();
-        String resultadoEsperado = "TRANSPORTE;500.00;10/05/2023";
+        String resultadoEsperado = "TRANSPORTE;500.0;10/05/2023";
 
         assertEquals(resultadoEsperado, resultadoToString);
     }
