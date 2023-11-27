@@ -1,22 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import java.text.SimpleDateFormat;
 import model.Enums.CategoriaReceita;
 import java.util.Date;
 
-/**
- *
- * @author Neves
- */
-public class Receita {
+public class Receita extends Lancamento {
 
     private CategoriaReceita categoria;
-    private Date data;
-    private double valor;
+
+    public Receita() {
+
+    }
+
+    public Receita(CategoriaReceita categoria, double valor, Date dataDespesa) {
+        super(valor, dataDespesa);
+    }
 
     public CategoriaReceita getCategoria() {
         return categoria;
@@ -24,22 +22,6 @@ public class Receita {
 
     public void setCategoria(CategoriaReceita categoria) {
         this.categoria = categoria;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
     }
 
     @Override

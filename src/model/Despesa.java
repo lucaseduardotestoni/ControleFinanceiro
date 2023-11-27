@@ -4,36 +4,27 @@ import java.text.SimpleDateFormat;
 import model.Enums.CategoriaDespesa;
 import java.util.Date;
 
-public class Despesa {
-    
-    private CategoriaDespesa categoria;
-    private double valor;
-    private Date data;
+public class Despesa extends Lancamento {
 
-    public CategoriaDespesa getCategoria() {
-        return categoria;
+    private CategoriaDespesa categoria;
+
+    public Despesa() {
+
+    }
+
+    public Despesa(CategoriaDespesa categoria, double valor, Date data) {
+        super(valor, data);
+        this.categoria = categoria;
     }
 
     public void setCategoria(CategoriaDespesa categoria) {
         this.categoria = categoria;
     }
 
-    public double getValor() {
-        return valor;
+    public CategoriaDespesa getCategoria() {
+        return categoria;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
-    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

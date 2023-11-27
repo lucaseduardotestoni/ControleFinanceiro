@@ -11,27 +11,24 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-import model.Dao.DespesaDao;
-import model.Dao.ReceitaDao;
 
 public class ImportadorControleFinanceiro {
 
     private File arquivoDespesa = (new File("Dados\\Despesas.csv"));
     private File arquivoReceita = (new File("Dados\\Receita.csv"));
 
-    public List<DespesaDao> processarArquivoDespesa() {
-        List<DespesaDao> despesas = new ArrayList<>();
+    public List<Despesa> processarArquivoDespesa() {
+        List<Despesa> despesas = new ArrayList<>();
         try (Scanner sc = new Scanner(arquivoDespesa, "UTF-8")) {
             if (sc.hasNextLine()) {
                 sc.nextLine();
             }
             while (sc.hasNextLine()) {
                 String linha = sc.nextLine();
-
-                //Categoria da Receita; Valor; Data	
+	
                 String[] dados = linha.split(";");
 
-                DespesaDao despesa = new DespesaDao(CategoriaDespesa.valueOf(dados[0]), Double.parseDouble(dados[1]), (new Date(dados[2])));
+                Despesa despesa = new Despesa(CategoriaDespesa.valueOf(dados[0]), Double.parseDouble(dados[1]), (new Date(dados[2])));
                 System.out.println(despesa);
                 despesas.add(despesa);
             }
@@ -41,8 +38,8 @@ public class ImportadorControleFinanceiro {
         return despesas;
     }
 
-    public List<ReceitaDao> processarArquivoReceita() {
-        List<ReceitaDao> receitas = new ArrayList<>();
+    public List<Receita> processarArquivoReceita() {
+        List<Receita> receitas = new ArrayList<>();
         try (Scanner sc = new Scanner(arquivoReceita, "UTF-8")) {
             if (sc.hasNextLine()) {
                 sc.nextLine();
@@ -51,11 +48,10 @@ public class ImportadorControleFinanceiro {
             while (sc.hasNextLine()) {
                 String linha = sc.nextLine();
 
-                //Salário Tech;3500;Empresa;25/03/2023
                 String[] dados = linha.split(";");
 
-                ReceitaDao receita = new ReceitaDao(CategoriaReceita.valueOf(dados[0]), Double.parseDouble(dados[1]), (new Date(dados[2])));
-                
+                Receita receita = new Receita(CategoriaReceita.valueOf(dados[0]), Double.parseDouble(dados[1]), (new Date(dados[2])));
+
                 receitas.add(receita);
             }
         } catch (FileNotFoundException e) {
