@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
-import model.CategoriaReceita;
+import model.Enums.CategoriaReceita;
 import model.Conta;
 import model.Receita;
 

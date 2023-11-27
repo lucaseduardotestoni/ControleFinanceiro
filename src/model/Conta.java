@@ -18,10 +18,8 @@ public class Conta {
 
     public Conta() {
         importador = new ImportadorControleFinanceiro();
-        importador.processarArquivoDespesa();
-        importador.processarArquivoReceita();
-        receitas = new ArrayList<>();
-        despesas = new ArrayList<>();
+        despesas = importador.processarArquivoDespesa();
+        receitas = importador.processarArquivoReceita();
     }
 
     public double getSaldo() {
@@ -70,9 +68,6 @@ public class Conta {
 
     public double consultarSaldoTotal() {
         double saldoAtual = 0;
-
-        // Obtém a data atual
-        Date dataAtual = new Date();
 
         // Somar receitas com data até hoje
         for (ReceitaDao receita : receitas) {

@@ -5,7 +5,7 @@
 package model;
 
 import java.text.SimpleDateFormat;
-import model.CategoriaReceita;
+import model.Enums.CategoriaReceita;
 import java.util.Date;
 
 /**
@@ -13,7 +13,7 @@ import java.util.Date;
  * @author Neves
  */
 public class Receita {
-    
+
     private CategoriaReceita categoria;
     private Date data;
     private double valor;
@@ -41,17 +41,16 @@ public class Receita {
     public void setValor(double valor) {
         this.valor = valor;
     }
-    
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(categoria).append(";");
-        
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        sb.append(sdf.format(data)).append(";");
-        
-        // Adicionando o valor
+
         sb.append(valor).append(";");
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sb.append(sdf.format(data));
 
         return sb.toString();
     }
