@@ -3,15 +3,17 @@ package model;
 import java.text.SimpleDateFormat;
 import model.Enums.CategoriaDespesa;
 import java.util.Date;
+
 /**
- * Extensao da Classe laçamento que contem todas informações
- * da Despesa*/
+ * Extensao da Classe laçamento que contem todas informações da Despesa
+ */
 public class Despesa extends Lancamento {
 
     private CategoriaDespesa categoria;
 
     public Despesa() {
     }
+
     public Despesa(CategoriaDespesa categoria, double valor, Date data) {
         super(valor, data);
         this.categoria = categoria;
@@ -26,8 +28,8 @@ public class Despesa extends Lancamento {
     }
 
     /**
-     * Metodo toString de Cadastro de Despesa, chama String Builder
-     * preparando os dados capturados do usuário para gravar.
+     * Metodo toString de Cadastro de Despesa, chama String Builder preparando
+     * os dados capturados do usuário para gravar.
      */
     @Override
     public String toString() {
@@ -37,8 +39,6 @@ public class Despesa extends Lancamento {
         sb.append(valor).append(";");
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         sb.append(sdf.format(data));
-
         return sb.toString();
     }
-    
 }

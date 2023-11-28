@@ -89,7 +89,7 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
 
         mnDespesa.setText("Despesa");
 
-        mnCadastroDespesa.setText("Casdastro");
+        mnCadastroDespesa.setText("Cadastro");
         mnCadastroDespesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnCadastroDespesaActionPerformed(evt);
@@ -177,7 +177,7 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
 
         Conta conta = new Conta();
         List<Despesa> listarDespesas = conta.listarDespesas();
-        SimpleDateFormat formatar = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         DecimalFormat df = new DecimalFormat();
         df.applyPattern("R$ #,##0.00");
         String categoria = "";
@@ -217,7 +217,7 @@ public class TelaConsultaDespesa extends javax.swing.JFrame {
                 }
                 model.addRow(new Object[]{
                     //retorna os dados da tabela do BD, cada campo e um coluna.
-                    categoria, df.format(Double.parseDouble((dadosDespesa[1]))), formatar.format(new Date(dadosDespesa[2]))});
+                    categoria, df.format(Double.parseDouble((dadosDespesa[1]))), sdf.format(new Date(dadosDespesa[2]))});
             }
         } else {
             JOptionPane.showMessageDialog(null, "Despesa inexistente - Verifique.");

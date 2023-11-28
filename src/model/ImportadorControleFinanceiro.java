@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -44,9 +45,9 @@ public class ImportadorControleFinanceiro {
                 String linha = sc.nextLine();
 
                 String[] dados = linha.split(";");
-                
+
                 Despesa despesa = new Despesa(CategoriaDespesa.valueOf(dados[0]), Double.parseDouble(dados[1]), (new Date(dados[2])));
-           
+
                 despesas.add(despesa);
             }
         } catch (FileNotFoundException e) {
@@ -74,7 +75,6 @@ public class ImportadorControleFinanceiro {
                 String[] dados = linha.split(";");
 
                 Receita receita = new Receita(CategoriaReceita.valueOf(dados[0]), Double.parseDouble(dados[1]), (new Date(dados[2])));
-
                 receitas.add(receita);
             }
         } catch (FileNotFoundException e) {

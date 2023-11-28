@@ -34,7 +34,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mnCadastroDespesa">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Casdastro"/>
+                <Property name="text" type="java.lang.String" value="Cadastro"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>

@@ -117,7 +117,7 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
 
         mnDespesa.setText("Despesa");
 
-        mnCadastroDespesa.setText("Casdastro");
+        mnCadastroDespesa.setText("Cadastro");
         mnCadastroDespesa.setEnabled(false);
         mnCadastroDespesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,7 +244,7 @@ public class TelaCadastroDespesa extends javax.swing.JFrame {
             despesa.setCategoria(CategoriaDespesa.valueOf(tipoDespesa.getSelectedItem().toString().toUpperCase()));
             despesa.setValor(Double.parseDouble(valorDespesa.getText()));
             String dataTexto = dataDespesa.getText();
-            SimpleDateFormat formatoData = new SimpleDateFormat("MM/dd/yyyy");
+            SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
             try {
                 Date data = formatoData.parse(dataTexto);
                 despesa.setData(data);

@@ -124,7 +124,7 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
 
         mnDespesa.setText("Despesa");
 
-        mnCadastroDespesa.setText("Casdastro");
+        mnCadastroDespesa.setText("Cadastro");
         mnCadastroDespesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnCadastroDespesaActionPerformed(evt);
@@ -253,9 +253,9 @@ public class TelaCadastroReceita extends javax.swing.JFrame {
             receita.setCategoria(CategoriaReceita.valueOf((String)tipoReceita.getSelectedItem().toString().toUpperCase()));
             receita.setValor(Double.parseDouble(valorReceita.getText()));
             String dataTexto = dataReceita.getText();
-            SimpleDateFormat formatoData = new SimpleDateFormat("MM/dd/yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             try {
-                Date data = formatoData.parse(dataTexto);
+                Date data = sdf.parse(dataTexto);
                 receita.setData(data);
             } catch (ParseException e) {
                 e.printStackTrace();

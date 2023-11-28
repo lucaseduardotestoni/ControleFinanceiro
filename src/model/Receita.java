@@ -3,6 +3,7 @@ package model;
 import java.text.SimpleDateFormat;
 import model.Enums.CategoriaReceita;
 import java.util.Date;
+
 /**
  * Extensao da Classe laçamento que contem todas informações
  * da Receita*/
@@ -41,4 +42,5 @@ public class Receita extends Lancamento {
         sb.append(sdf.format(data));
         return sb.toString();
     }
+    
 }

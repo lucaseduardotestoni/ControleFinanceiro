@@ -91,7 +91,7 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
 
         mnDespesa.setText("Despesa");
 
-        mnCadastroDespesa.setText("Casdastro");
+        mnCadastroDespesa.setText("Cadastro");
         mnCadastroDespesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnCadastroDespesaActionPerformed(evt);
@@ -179,8 +179,7 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
 
         Conta conta = new Conta();
         List<Receita> listarReceitas = conta.listarReceitas();
-
-        SimpleDateFormat formatar = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         DecimalFormat df = new DecimalFormat();
         df.applyPattern("R$ #,##0.00");
         String categoria = "";
@@ -193,7 +192,7 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
                         break;
                     }
                     case "DECIMO_TERCEIRO": {
-                        categoria = "Transporte";
+                        categoria = "Décimo Terceiro";
                         break;
                     }
                     case "FERIAS": {
@@ -207,7 +206,7 @@ public class TelaConsultaReceita extends javax.swing.JFrame {
                 }
                 model.addRow(new Object[]{
                     //retorna os dados da tabela do BD, cada campo e um coluna.
-                    categoria, df.format(Double.parseDouble((dadosReceita[1]))), formatar.format(new Date(dadosReceita[2]))});
+                    categoria, df.format(Double.parseDouble((dadosReceita[1]))), sdf.format(new Date(dadosReceita[2]))});
             }
         } else {
             JOptionPane.showMessageDialog(null, "Receita inexistente - Verifique.");
